@@ -1,4 +1,4 @@
-project(ch1)
+project(ch1-Array-Strings)
 
 add_executable(1.1IsUnique 1.1IsUnique.cpp)
 add_executable(1.2Permutation 1.2Permutation.cpp)

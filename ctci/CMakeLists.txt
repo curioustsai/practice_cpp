@@ -1,2 +1,3 @@
-add_subdirectory(ch1)
-add_subdirectory(ch2)
+add_subdirectory(ch1-Array-Strings)
+add_subdirectory(ch2-Linkedlist)
+add_subdirectory(ch3-Stack)

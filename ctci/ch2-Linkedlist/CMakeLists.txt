@@ -1,0 +1,10 @@
+project(ch2-Linkedlist)
+
+add_executable(2.1RemoveDups 2.1RemoveDups.cpp)
+add_executable(2.2KthtoLast 2.2KthtoLast.cpp)
+add_executable(2.3DeleteMiddleNode 2.3DeleteMiddleNode.cpp)
+add_executable(2.4Partition 2.4Partition.cpp)
+add_executable(2.5SumList 2.5SumList.cpp)
+add_executable(2.6Palindrome 2.6Palindrome.cpp)
+add_executable(2.7Intersection 2.7Intersection.cpp)
+add_executable(2.8Circularloop 2.8Circularloop.cpp)
