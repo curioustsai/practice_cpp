@@ -1,0 +1,12 @@
+[submodule "ref/cracking-the-coding-interview"]
+	path = ref/cracking-the-coding-interview
+	url = https://github.com/Hawstein/cracking-the-coding-interview
+[submodule "ref/CtCI-6th-Edition-cpp"]
+	path = ref/CtCI-6th-Edition-cpp
+	url = https://github.com/careercup/CtCI-6th-Edition-cpp.git
+[submodule "ref/practice-cpp"]
+	path = ref/practice-cpp
+	url = https://github.com/jwasham/practice-cpp
+[submodule "doc/coding-interview-university"]
+	path = doc/coding-interview-university
+	url = git@github.com:ui-richard/coding-interview-university.git
