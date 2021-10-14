@@ -1,66 +1,62 @@
 #include <iostream>
+#include <stack>
+#include <climits>
 
-// constexpr int stacks = 3;
-//
-// template <class T>
-// class ThreeInOneStack {
-// public:
-//     ThreeInOneStack(int size) : _stackSize(size) {
-//         _arraySize = stacks * _stackSize;
-//         _data = new T[_arraySize];
-//     }
-//     ~ThreeInOneStack() { delete[] _data; }
-//
-// private:
-//     int _stackSize;
-//     int _arraySize;
-//     T* _data;
-// };
-
-template <class T>
-class Stack {
+class StackMin {
 public:
-    Stack() = delete;
-    Stack(int size) : _size(size) { _data = new T[_size]; };
-    ~Stack() { delete[] _data; }
-
-    // T* min();
-    T& top() const { return _data[_count - 1]; }
-    void push(T data) {
-        if (_count > _size) return;
-        _data[_count++] = data;
-    }
-    void empty() {
-        memset(_data, 0, sizeof(T) * _size);
-        _size = 0;
-    };
-    int size() const { return _size; }
-    void pop() {
-        _data[_count - 1] = 0;
-        _count--;
-    }
+    void pop();
+    void push(int value);
+    int top() const;
+    int min() const;
+    bool empty() const;
 
 private:
-    T* _data{nullptr};
-    int _size{32};
-    int _count{0};
+    std::stack<int> stack;
+    std::stack<int> stack_min;
 };
 
-int main() {
-    Stack<int> s{32};
-    s.push(5);
-    s.push(4);
-    s.push(3);
-    s.push(2);
-    s.push(1);
+void StackMin::push(int value) {
+    stack.push(value);
+    if (min() > value)
+        stack_min.push(value);
+}
 
-    std::cout << s.top() << std::endl;
+int StackMin::min() const {
+    if (stack_min.empty())
+        return INT_MAX;
+
+    return stack_min.top();
+}
+
+void StackMin::pop() {
+    if (stack.top() == min())
+        stack_min.pop();
+    stack.pop();
+}
+
+int StackMin::top() const {
+    return stack.top();
+}
+
+bool StackMin::empty() const {
+    return stack.empty();
+}
+
+int main()
+{
+    StackMin s;
+
+    s.push(100);
+    s.push(20);
+    s.push(200);
+    s.push(400);
+    s.push(10);
+
+    std::cout << s.min() << std::endl;
     s.pop();
-    std::cout << s.top() << std::endl;
+
+    std::cout << s.min() << std::endl;
     s.pop();
-    std::cout << s.top() << std::endl;
-    s.pop();
-    std::cout << s.top() << std::endl;
 
     return 0;
 }
