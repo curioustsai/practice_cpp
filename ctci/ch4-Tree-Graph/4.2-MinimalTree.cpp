@@ -1,6 +1,13 @@
+/*
+ * MinimalTREE:
+ * assumption
+ * 1. input is an sorted arry
+ * 2. output an MinimalTREE
+ */
+
 #include <iostream>
-#include <queue>
 #include <list>
+#include <queue>
 
 using namespace std;
 
@@ -42,7 +49,6 @@ void traverse_bfs(Node *tree) {
         if (p->right) q.push(p->right);
     }
 }
-
 
 int main() {
     // int array[] = {1, 2, 3, 4, 5, 6, 7};

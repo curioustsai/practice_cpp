@@ -3,4 +3,4 @@
 [ ! -d ./build ] && mkdir build
 cd build
 # cmake .. -DCPP_WITH_TEST=ON && make
-cmake .. && make
+cmake -DDEBUG=ON .. && make
