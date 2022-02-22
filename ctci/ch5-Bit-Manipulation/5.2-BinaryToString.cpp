@@ -5,9 +5,7 @@ using namespace std;
 
 // Given [0, 1], convert to string
 string binaryToString(const double num) {
-    string str;
-    int count = 0;
-
+    string str("");
     if (num > 1 || num < 0) return "ERROR";
 
     str.append(".");
