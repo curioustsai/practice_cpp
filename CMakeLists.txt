@@ -49,6 +49,6 @@ include(GoogleTest)
 
 ### Env ###
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_ROOT}/cmake)
-include(${CMAKE_MODULE_PATH}/Utils.cmake)
+include(${CMAKE_MODULE_PATH}/utils/Utils.cmake)
 
 add_subdirectory(code)
