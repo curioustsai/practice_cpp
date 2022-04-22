@@ -51,4 +51,4 @@ include(GoogleTest)
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_ROOT}/cmake)
 include(${CMAKE_MODULE_PATH}/Utils.cmake)
 
-add_subdirectory(ctci)
+add_subdirectory(code)
