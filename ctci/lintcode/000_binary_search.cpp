@@ -1,3 +1,4 @@
+#include <gtest/gtest.h>
 #include <iostream>
 #include <stack>
 #include <vector>
@@ -43,12 +44,10 @@ public:
     }
 };
 
-int main(int argc, char *argv[]) {
+TEST(BinarySearch, search)
+{
     vector<int> arr = {0, 1, 2, 3, 4, 5, 6};
-
     BinarySearch bs;
-    cout << "index: " << bs.search(arr, 4) << endl;
-    cout << "index: " << bs.search_v2(arr, 4, 0, arr.size() - 1) << endl;
-
-    return 0;
+    ASSERT_EQ(bs.search(arr, 4), 4);
 }
+

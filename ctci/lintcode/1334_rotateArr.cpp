@@ -1,3 +1,4 @@
+#include <gtest/gtest.h>
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -52,16 +53,13 @@ class Solution
     }
 };
 
-int main (int argc, char *argv[])
+TEST(Rotate, brute) 
 {
     vector<int> nums = {0, 1, 2, 3, 4, 5, 6};
+    vector<int> ans = {4, 5, 6, 0, 1, 2, 3};
     Solution sol;
 
     // vector<int> res = sol.rotate(nums, 3);
     vector<int> res = sol.rotate_brute(nums, 3);
-
-    for (auto & i: res)
-        cout << i << endl;
-
-    return 0;
+    ASSERT_EQ(equal(res.begin(), res.end(), ans.begin()), true);
 }
