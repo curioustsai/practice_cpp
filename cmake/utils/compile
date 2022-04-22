@@ -1,10 +1,63 @@
 #!/bin/bash
+set -e
+
+#------------- get parameters section ------------------------------------------
+
+printHelp() {
+    echo "Usage: "
+    echo "$SCRIPT -p <platform> [-t] [-u] [-b <buildType>] [-l <libsType>] [-j <njobs>] [-n] [-c] [-h] [--cppcheck] [--toolchains]"
+    echo ""
+    echo "    -p            Platform which can be: ${UBNT_PLATFORMS_LIST[*]}. There is no default value. This is mandatory. Not needed for building unit tests"
+    echo "    -t            Build the tests applications as well."
+    echo "    -u            Build and run the unit tests."
+    echo "    -b            The build type which can be Debug, Release or MinSizeRel. Default is MinSizeRel."
+    echo "    -l            How the libraries will be built. Either STATIC or SHARED. Default is STATIC."
+    echo "    -j            How many compilation units will be done simultaneously. Default is 4."
+    echo "    -n            Skip all intermediate steps and perform the build directly"
+    echo "    -c            Do clean before build"
+    echo "    -v            Enable verbose build"
+    echo "    -s            Enable backtrace to print call stack when crash dump"
+    echo "    -g    Audio log level: 'debug', 'info', 'warn', 'off'. Default is 'warn'"
+    echo "    -h            Prints this help and exits."
+    echo "    --cppcheck    Also run cppcheck static code analyzer after the build"
+    echo "    --toolchains  Download all toolchains and barebones, quit after that"
+    echo ""
+}
 
 PROJECT_ROOT=$(realpath $(dirname $0)/../.. )
 CMAKE_WORK_DIR=${PROJECT_ROOT}/build
+
 NUMBER_JOBS=8
+DO_CLEAN=NO
+CPPCHECK=NO
+
+OPTIONS="j:ch"
+ARGS=$(getopt $OPTIONS -- $*)
+set -- $ARGS
+for i
+do
+    case "$i"
+    in
+        -j)
+            NUMBER_JOBS=$2; shift
+            shift
+            ;;
+        -c)
+            DO_CLEAN=YES
+            shift
+            ;;
+        -h)
+            printHelp
+            exit 0
+            ;;
+    esac
+done
+
+[ ${DO_CLEAN} == "YES" ] && rm -rf ${CMAKE_WORK_DIR}
 
 [ ! -d $CMAKE_WORK_DIR ] && mkdir ${CMAKE_WORK_DIR}
+
 cd ${CMAKE_WORK_DIR}
-cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ${PROJECT_ROOT} -G Ninja && ninja -j ${NUMBER_JOBS}
+cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ${PROJECT_ROOT} -G Ninja \
+    && ninja -j ${NUMBER_JOBS}
 ctest
