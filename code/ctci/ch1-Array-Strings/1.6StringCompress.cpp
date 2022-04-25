@@ -16,7 +16,7 @@ bool compressString(string& str) {
     int j = 1;
 
     // last index is null-terminated
-    while (j <= str.size()) {
+    while (j < str.size()) {
         if (str[j] == str[j - 1]) {
             count++;
         } else {
