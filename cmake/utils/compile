@@ -4,6 +4,13 @@ set -e
 #------------- get parameters section ------------------------------------------
 
 SCRIPT=$0
+PROJECT_ROOT=$(realpath $(dirname $SCRIPT)/../.. )
+CMAKE_WORK_DIR=${PROJECT_ROOT}/build
+
+NUMBER_JOBS=8
+DO_CLEAN=NO
+DO_CTEST=NO
+CPPCHECK=NO
 
 printHelp() {
     echo "Usage: "
@@ -12,17 +19,23 @@ printHelp() {
     echo "    -j            How many compilation units will be done simultaneously. Default is 4."
     echo "    -c            Do clean before build"
     echo "    -h            Prints this help and exits."
+    echo "    --cppcheck    Do cppcheck"
     echo ""
 }
 
-PROJECT_ROOT=$(realpath $(dirname $SCRIPT)/../.. )
-CMAKE_WORK_DIR=${PROJECT_ROOT}/build
+ccheck() {
+    CPPCHECK_LOG=${CMAKE_WORK_DIR}/cppcheck.txt
+    [ -s $CPPCHECK_LOG ] && rm $CPPCHECK_LOG
+    cppcheck $PROJECT_ROOT/code 2> $CPPCHECK_LOG
 
-NUMBER_JOBS=8
-DO_CLEAN=NO
-CPPCHECK=NO
+    if [ -s $CPPCHECK_LOG ]; then
+        echo -e "errors exist"
+        cat $CPPCHECK_LOG
+        echo -e "\n"
+    fi
+}
 
-OPTIONS="j:ch"
+OPTIONS="-o j:cht --long cppcheck"
 ARGS=$(getopt $OPTIONS -- $*)
 set -- $ARGS
 for i
@@ -35,6 +48,10 @@ do
             ;;
         -c)
             DO_CLEAN=YES
+            shift
+            ;;
+        --cppcheck)
+            CPPCHECK=YES
             shift
             ;;
         -h)
@@ -51,4 +68,6 @@ done
 cd ${CMAKE_WORK_DIR}
 cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ${PROJECT_ROOT} -G Ninja \
     && ninja -j ${NUMBER_JOBS}
+
 ctest
+[ ${CPPCHECK} == "YES" ] && ccheck
