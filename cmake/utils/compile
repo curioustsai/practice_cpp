@@ -35,8 +35,9 @@ ccheck() {
     fi
 }
 
-OPTIONS="-o j:cht --long cppcheck"
-ARGS=$(getopt $OPTIONS -- $*)
+SHORT_OPTIONS="j:cht"
+LONG_OPTTIONS="cppcheck"
+ARGS=$(getopt -o $SHORT_OPTIONS --long $LONG_OPTTIONS -- $*)
 set -- $ARGS
 for i
 do
