@@ -8,13 +8,9 @@ using namespace std;
 class MyQueue {
 public:
     void Enque(int value) {
-        if (s1.empty()) {
-            s2.push(value);
-        }
+        if (s1.empty()) { s2.push(value); }
 
-        if (s2.empty()) {
-            s1.push(value);
-        }
+        if (s2.empty()) { s1.push(value); }
     };
 
     int Deque() {
@@ -45,13 +41,9 @@ private:
 int main() {
     MyQueue q;
 
-    for (int i : {1, 2, 3, 4, 5, 6, 7, 8}) {
-        q.Enque(i);
-    }
+    for (int i : {1, 2, 3, 4, 5, 6, 7, 8}) { q.Enque(i); }
 
-    while (!q.Empty()) {
-        cout << q.Deque() << endl;
-    };
+    while (!q.Empty()) { cout << q.Deque() << endl; };
 
     return 0;
 }

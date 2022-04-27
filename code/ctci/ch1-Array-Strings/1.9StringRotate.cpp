@@ -18,13 +18,10 @@
 using namespace std;
 
 bool isStringRotate(string& str1, string& str2) {
-    if (str1.size() == 0 || str1.size() != str2.size()) 
-        return false;
+    if (str1.size() == 0 || str1.size() != str2.size()) return false;
 
     string concat = str1 + str1;
-    if (concat.find(str2) != string::npos) {
-        return true;
-    }
+    if (concat.find(str2) != string::npos) { return true; }
     return false;
 }
 

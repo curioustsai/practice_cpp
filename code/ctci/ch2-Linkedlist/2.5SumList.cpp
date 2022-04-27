@@ -46,8 +46,7 @@ Node<int>* sum(Node<int>* node1, Node<int>* node2) {
         ptr2 = ptr2->next;
     }
 
-    if (carrier)
-        appendNode(result, carrier);
+    if (carrier) appendNode(result, carrier);
 
     return result;
 }
@@ -67,7 +66,7 @@ int main() {
 
     printNodes(num1);
     printNodes(num2);
-    
+
     Node<int>* result = sum(num1, num2);
     printNodes(result);
 

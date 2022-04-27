@@ -1,6 +1,6 @@
+#include <climits>
 #include <iostream>
 #include <stack>
-#include <climits>
 
 class StackMin {
 public:
@@ -17,33 +17,25 @@ private:
 
 void StackMin::push(int value) {
     stack.push(value);
-    if (min() > value)
-        stack_min.push(value);
+    if (min() > value) stack_min.push(value);
 }
 
 int StackMin::min() const {
-    if (stack_min.empty())
-        return INT_MAX;
+    if (stack_min.empty()) return INT_MAX;
 
     return stack_min.top();
 }
 
 void StackMin::pop() {
-    if (stack.top() == min())
-        stack_min.pop();
+    if (stack.top() == min()) stack_min.pop();
     stack.pop();
 }
 
-int StackMin::top() const {
-    return stack.top();
-}
+int StackMin::top() const { return stack.top(); }
 
-bool StackMin::empty() const {
-    return stack.empty();
-}
+bool StackMin::empty() const { return stack.empty(); }
 
-int main()
-{
+int main() {
     StackMin s;
 
     s.push(100);

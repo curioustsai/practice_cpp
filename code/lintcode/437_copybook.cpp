@@ -37,8 +37,7 @@ public:
             }
         }
 
-        if (countCopier(arr, start) <= n)
-            return start;
+        if (countCopier(arr, start) <= n) return start;
 
         return end;
     }

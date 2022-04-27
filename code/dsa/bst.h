@@ -4,7 +4,7 @@
 // template <class T>
 class BSTNode {
 public:
-    BSTNode(int data) : _data(data){
+    BSTNode(int data) : _data(data) {
         leftNode = nullptr;
         rightNode = nullptr;
     };
@@ -28,10 +28,10 @@ public:
 
     // Returns height of the tree, 0 if empty
     int GetHeight(BSTNode* node);
-    
+
     // Print out the items in the tree in level order
     void PrintBFS(BSTNode* node);
-    
+
     // Print out the items in the tree in order (inorder)
     void PrintInOrder(BSTNode* node);
 
@@ -46,7 +46,7 @@ public:
 
     // Returns the node in the tree with the minimum value
     BSTNode* GetMinNode(BSTNode* node);
-    
+
     // Returns the in-order successor of the given value
     BSTNode* GetSuccessor(BSTNode* node, int value);
 

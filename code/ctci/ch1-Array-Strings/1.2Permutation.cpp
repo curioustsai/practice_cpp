@@ -49,12 +49,12 @@ int main() {
     getline(cin, str2);
 
     //method 1
-    cout << str1 << " is permuatation of " << str2 << " " << boolalpha
-         << isPermutation(str1, str2) << endl;
+    cout << str1 << " is permuatation of " << str2 << " " << boolalpha << isPermutation(str1, str2)
+         << endl;
 
     //method 2
-    cout << str1 << " is permuatation of " << str2 << " " << boolalpha
-         << isPermutation2(str1, str2) << endl;
+    cout << str1 << " is permuatation of " << str2 << " " << boolalpha << isPermutation2(str1, str2)
+         << endl;
 
     return 0;
 }

@@ -20,9 +20,7 @@ void zeroMatrix(unsigned int **matrix, int m, int n) {
 
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
-            if (hitX[i] || hitY[j]) {
-                matrix[i][j] = 0;
-            }
+            if (hitX[i] || hitY[j]) { matrix[i][j] = 0; }
         }
     }
 
@@ -32,9 +30,7 @@ void zeroMatrix(unsigned int **matrix, int m, int n) {
 
 void printMatrix(unsigned int **matrix, int m, int n) {
     for (int i = 0; i < m; i++) {
-        for (int j = 0; j < n; j++) {
-            std::cout << matrix[i][j] << ",\t";
-        }
+        for (int j = 0; j < n; j++) { std::cout << matrix[i][j] << ",\t"; }
         std::cout << std::endl;
     }
     std::cout << std::endl;
@@ -43,14 +39,10 @@ void printMatrix(unsigned int **matrix, int m, int n) {
 int main() {
     unsigned int **matrix;
     matrix = (unsigned int **)new unsigned int *[M];
-    for (int i = 0; i < M; i++) {
-        matrix[i] = (unsigned int *)new unsigned int[N];
-    }
+    for (int i = 0; i < M; i++) { matrix[i] = (unsigned int *)new unsigned int[N]; }
 
     for (int i = 0; i < M; i++) {
-        for (int j = 0; j < N; j++) {
-            matrix[i][j] = rand() % 100;
-        }
+        for (int j = 0; j < N; j++) { matrix[i][j] = rand() % 100; }
     }
 
     matrix[2][3] = 0;

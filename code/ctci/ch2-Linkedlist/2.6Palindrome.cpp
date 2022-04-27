@@ -97,8 +97,7 @@ bool isPalindrome2(Node<char> *head) {
     printNodes(reverse);
 
     while (ptr2 != nullptr) {
-        if (ptr2->data != ptr1->data)
-            return false;
+        if (ptr2->data != ptr1->data) return false;
         ptr1 = ptr1->next;
         ptr2 = ptr2->next;
     }

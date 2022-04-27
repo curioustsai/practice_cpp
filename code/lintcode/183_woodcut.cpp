@@ -1,11 +1,10 @@
-#include <vector>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 class Solution {
-    public:
-
+public:
     /**
      * @param L: Given n pieces of wood with lenght L[i]
      * @param k: An integer
@@ -17,12 +16,10 @@ class Solution {
         int totalLen = 0;
         for (int i = 0; i < L.size(); i++) {
             totalLen += L[i];
-            if (L[i] > maxLen)
-                maxLen = L[i];
+            if (L[i] > maxLen) maxLen = L[i];
         }
 
-        if (totalLen < k)
-            return 0;
+        if (totalLen < k) return 0;
 
         // core algorithm
         // binary search [0, maxL], and check if it meets the requirements
@@ -30,11 +27,9 @@ class Solution {
         int right = maxLen;
         int ans = 0;
 
-        while (left <= right)
-        {
+        while (left <= right) {
             int mid = left + (right - left) / 2;
-            if (validateLen(L, k, mid) == true)
-            {
+            if (validateLen(L, k, mid) == true) {
                 left = mid + 1;
                 ans = mid;
             } else {
@@ -45,21 +40,18 @@ class Solution {
         return ans;
     }
 
-    private:
-    bool validateLen(vector<int> &L, int k, int candidate)
-    {
+private:
+    bool validateLen(vector<int> &L, int k, int candidate) {
         if (!candidate) return false;
 
         int count = 0;
-        for (size_t i = 0; i < L.size(); i++)
-            count += (L[i] / candidate);
+        for (size_t i = 0; i < L.size(); i++) count += (L[i] / candidate);
 
         return count >= k;
     }
 };
 
-int main (int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     Solution sol;
     vector<int> L = {232, 124, 456};
     int k = 7;

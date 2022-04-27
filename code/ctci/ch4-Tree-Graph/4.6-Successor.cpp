@@ -30,16 +30,11 @@ Node *findSuccessor(Node *root) {
     if (root->left) {
         // find the most right node
         successor = root->left;
-        while (successor->right) {
-            successor = successor->right;
-        }
-    }
-    else if (root->right) {
+        while (successor->right) { successor = successor->right; }
+    } else if (root->right) {
         // find the most left leaf node
         successor = root->right;
-        while (successor->left) {
-            successor = successor->left;
-        }
+        while (successor->left) { successor = successor->left; }
     }
 
     return successor;
@@ -58,4 +53,3 @@ int main() {
 
     return 0;
 }
-

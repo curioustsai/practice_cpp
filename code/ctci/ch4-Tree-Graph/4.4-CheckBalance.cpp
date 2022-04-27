@@ -28,12 +28,12 @@ Node *create_bst(Node *tree, int arr[], int leftpoint, int rightpoint) {
     return node;
 }
 
-int height(Node* root) {
+int height(Node *root) {
     if (root->left == nullptr && root->right == nullptr) return 1;
 
     if (root->left == nullptr) {
         return height(root->right) + 1;
-    } else if (root->right == nullptr){
+    } else if (root->right == nullptr) {
         return height(root->left) + 1;
     } else {
         return std::max(height(root->left), height(root->right)) + 1;
@@ -45,9 +45,8 @@ bool isBalance(Node *root) {
     int left_height = height(root->left);
     int right_height = height(root->right);
 
-    return (abs(left_height- right_height) <= 1);
+    return (abs(left_height - right_height) <= 1);
 }
-
 
 int main() {
 

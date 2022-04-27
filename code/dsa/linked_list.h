@@ -1,7 +1,7 @@
 #pragma once
 
 namespace dsa {
-template<class T>
+template <class T>
 class ListNode {
 public:
     void appendTail(T data);
@@ -11,9 +11,9 @@ private:
     T _data;
 };
 
-template<class T>
+template <class T>
 class Linkedlist {
-    public:
-        Linkedlist();
+public:
+    Linkedlist();
 };
 } // namespace dsa

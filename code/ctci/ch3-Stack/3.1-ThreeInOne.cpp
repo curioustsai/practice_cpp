@@ -24,8 +24,7 @@ private:
     int indexOfTop(int stackNum) const;
 };
 
-FixedMultiStack::FixedMultiStack(int stackCapacity)
-    : stackCapacity(stackCapacity) {
+FixedMultiStack::FixedMultiStack(int stackCapacity) : stackCapacity(stackCapacity) {
     stackArray = new int[numOfStack * stackCapacity]{0};
     stackCapacityUsed = new int[numOfStack];
 }
@@ -54,9 +53,7 @@ void FixedMultiStack::pop(int stackNum) {
     stackCapacityUsed[stackNum]--;
 }
 
-bool FixedMultiStack::isEmpty(int stackNum) const {
-    return (stackCapacityUsed[stackNum] == 0);
-}
+bool FixedMultiStack::isEmpty(int stackNum) const { return (stackCapacityUsed[stackNum] == 0); }
 
 bool FixedMultiStack::isFull(int stackNum) const {
     return (stackCapacityUsed[stackNum] == stackCapacity);

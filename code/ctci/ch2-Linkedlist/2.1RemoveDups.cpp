@@ -33,9 +33,7 @@ public:
         }
 
         Node* ptr = head;
-        while (ptr->next != nullptr) {
-            ptr = ptr->next;
-        }
+        while (ptr->next != nullptr) { ptr = ptr->next; }
         ptr->next = new Node(data);
     };
 

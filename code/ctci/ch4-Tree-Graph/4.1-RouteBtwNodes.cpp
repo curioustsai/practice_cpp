@@ -5,7 +5,7 @@
 using namespace std;
 class Graph {
 public:
-    Graph(int numNodes): numNodes(numNodes) { adj = new vector<int>[numNodes]; }
+    Graph(int numNodes) : numNodes(numNodes) { adj = new vector<int>[numNodes]; }
     ~Graph() { delete[] adj; }
 
     void connect(int from, int to) { adj[from].push_back(to); }

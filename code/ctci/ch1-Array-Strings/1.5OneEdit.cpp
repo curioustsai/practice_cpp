@@ -30,18 +30,16 @@ bool isOneEdit(string str1, string str2) {
     bool mismatchDone = false;
     while (i < lenShort && j < lenLong) {
         if (strShort[i] != strLong[j]) {
-            if (mismatchDone) {
-                return false;
-            }
+            if (mismatchDone) { return false; }
             mismatchDone = true;
             if (lenLong == lenShort) {
-                ++i;  // case 3: replace
+                ++i; // case 3: replace
             }
         } else {
-            ++i;  // move short pointer if its a match, dont move it in case of
-                  // first mismatch
+            ++i; // move short pointer if its a match, dont move it in case of
+                 // first mismatch
         }
-        ++j;  // always move long string pointer.
+        ++j; // always move long string pointer.
     }
 
     return true;

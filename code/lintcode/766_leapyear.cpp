@@ -3,23 +3,16 @@
 #include <iostream>
 using namespace std;
 
-class Solution
-{
-    public:
-    bool isLeapYear(int year)
-    {
-        if (year % 4 == 0)
-        {
-            if (year % 100 == 0)
-            {
-                if (year % 400 == 0)
-                {
+class Solution {
+public:
+    bool isLeapYear(int year) {
+        if (year % 4 == 0) {
+            if (year % 100 == 0) {
+                if (year % 400 == 0) {
                     return true;
-                }
-                else {
+                } else {
                     return false;
                 }
-
             }
             return true;
         }
@@ -28,9 +21,7 @@ class Solution
     }
 };
 
-
-int main()
-{
+int main() {
     Solution sol;
 
     cout << boolalpha << sol.isLeapYear(2000) << endl;

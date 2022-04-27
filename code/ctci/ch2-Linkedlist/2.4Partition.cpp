@@ -12,8 +12,8 @@
  *  and smaller values at head.
  */
 
-#include <stdio.h>
 #include "Node.h"
+#include <stdio.h>
 
 Node<int> *partition(Node<int> *head, int value) {
     Node<int> *largeList = nullptr;
@@ -30,9 +30,7 @@ Node<int> *partition(Node<int> *head, int value) {
     }
 
     ptr = largeList;
-    while (ptr->next) {
-        ptr = ptr->next;
-    }
+    while (ptr->next) { ptr = ptr->next; }
     ptr->next = smallList;
 
     return largeList;

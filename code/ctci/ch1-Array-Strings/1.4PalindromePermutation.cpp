@@ -24,18 +24,14 @@ bool isPalidromePermutation(string str) {
 
     for (int i = 0; i < str.size(); i++) {
         int val = getValue(str[i]);
-        if (val >= 0) {
-            hit[val]++;
-        }
+        if (val >= 0) { hit[val]++; }
     }
 
     int sum = 0;
     bool bSingleOdd = false;
     for (int i = 0; i < NUM_LETTERS; i++) {
         if (hit[i] % 2) {
-            if (bSingleOdd) {
-                return false;
-            }
+            if (bSingleOdd) { return false; }
             bSingleOdd = true;
         }
         sum += hit[i];

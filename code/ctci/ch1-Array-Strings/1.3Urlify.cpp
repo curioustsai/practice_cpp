@@ -49,7 +49,7 @@ string Urlify(string input) {
     int outputSize = input.size() + space_count * (3 - 1);
     output.resize(outputSize);
 
-    for (int i = 0, j = 0 ; i < input.size(); ++i, ++j) {
+    for (int i = 0, j = 0; i < input.size(); ++i, ++j) {
         if (input[i] != ' ') {
             output[j] = input[i];
         } else {

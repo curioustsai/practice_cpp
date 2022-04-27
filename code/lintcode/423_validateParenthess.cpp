@@ -1,23 +1,19 @@
 #include <iostream>
-#include <vector>
 #include <stack>
+#include <vector>
 
 using namespace std;
 
-class Solution
-{
-    public:
+class Solution {
+public:
     /*
      * @param s: a string
      * @return: where the string is a valid parentheses
      */
-    bool validateParethenses(string &s)
-    {
+    bool validateParethenses(string &s) {
         stack<char> pstack;
-        for (int i = 0; i < s.size(); i++)
-        {
-            if (s[i] == '(' || s[i] == '[' || s[i] == '{')
-                pstack.push(s[i]);
+        for (int i = 0; i < s.size(); i++) {
+            if (s[i] == '(' || s[i] == '[' || s[i] == '{') pstack.push(s[i]);
 
             if (s[i] == ')') {
                 if (pstack.top() == '(') {
@@ -40,15 +36,13 @@ class Solution
             }
         }
 
-        if (!pstack.empty())
-            return false;
+        if (!pstack.empty()) return false;
         return true;
     }
 };
 
-int main (int argc, char *argv[])
-{
-    string str1 = "([)]"; //false
+int main(int argc, char *argv[]) {
+    string str1 = "([)]";   //false
     string str2 = "()[]{}"; //true
 
     Solution sol;

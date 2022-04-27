@@ -15,9 +15,7 @@ bool isUnique_bitset(string str) {
     bitset<256> bitmap(0);
     for (int i = 0; i < str.size(); i++) {
         int val = str[i];
-        if (bitmap.test(val) > 0) {
-            return false;
-        }
+        if (bitmap.test(val) > 0) { return false; }
         bitmap.set(val);
     }
     return true;

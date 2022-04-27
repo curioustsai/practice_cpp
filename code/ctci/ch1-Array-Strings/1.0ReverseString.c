@@ -4,9 +4,7 @@ void reverseString(char *str) {
     char *end = str;
     if (str == 0) return;
 
-    while (*end) {
-        end++;
-    }
+    while (*end) { end++; }
     end--;
 
     while (str < end) {

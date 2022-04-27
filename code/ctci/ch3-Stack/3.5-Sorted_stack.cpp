@@ -38,9 +38,7 @@ private:
 
 int main(void) {
     SortedStack s;
-    for (int i : {1, 2, 4, 3, 7, 8, 10, 7, 3, 2,1}) {
-        s.push(i);
-    }
+    for (int i : {1, 2, 4, 3, 7, 8, 10, 7, 3, 2, 1}) { s.push(i); }
 
     while (!s.empty()) {
         cout << s.top() << endl;

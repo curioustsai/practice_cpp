@@ -20,24 +20,18 @@ public:
 
     int top() {
         if (stackArr[currStack].empty()) {
-            if (currStack == 0) {
-                std::cout << "empty data" << std::endl;
-            }
+            if (currStack == 0) { std::cout << "empty data" << std::endl; }
             currStack--;
         }
         return stackArr[currStack].top();
     };
     void push(int value) {
-        if (stackArr[currStack].size() > threshold) {
-            currStack++;
-        }
+        if (stackArr[currStack].size() > threshold) { currStack++; }
         stackArr[currStack].push(value);
     };
     void popAt(int index) { stackArr[index].pop(); };
 
-    bool empty() const {
-        return (currStack == 0 && stackArr[currStack].empty());
-    }
+    bool empty() const { return (currStack == 0 && stackArr[currStack].empty()); }
 
 private:
     std::stack<int> *stackArr;
@@ -47,9 +41,7 @@ private:
 
 int main(void) {
     StackOfPlates s;
-    for (auto i : {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}) {
-        s.push(i);
-    }
+    for (auto i : {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}) { s.push(i); }
 
     while (!s.empty()) {
         std::cout << s.top() << std::endl;

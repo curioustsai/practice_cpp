@@ -22,9 +22,7 @@ void appendNode(Node<T> *&head, T data) {
         head = new Node<T>(data);
     } else {
         Node<T> *ptr = head;
-        while (ptr->next) {
-            ptr = ptr->next;
-        }
+        while (ptr->next) { ptr = ptr->next; }
 
         ptr->next = new Node<T>(data);
         return;

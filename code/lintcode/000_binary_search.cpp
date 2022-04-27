@@ -44,10 +44,8 @@ public:
     }
 };
 
-TEST(BinarySearch, search)
-{
+TEST(BinarySearch, search) {
     vector<int> arr = {0, 1, 2, 3, 4, 5, 6};
     BinarySearch bs;
     ASSERT_EQ(bs.search(arr, 4), 4);
 }
-

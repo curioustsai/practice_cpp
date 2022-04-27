@@ -22,8 +22,8 @@ Node<char> *isIntersection(Node<char> *list1, Node<char> *list2) {
     int len1 = listLen(list1);
     int len2 = listLen(list2);
 
-    Node<char> *ptrlong = (len1 > len2) ? list1: list2;
-    Node<char> *ptrshort = (len1 > len2) ? list2: list1;
+    Node<char> *ptrlong = (len1 > len2) ? list1 : list2;
+    Node<char> *ptrshort = (len1 > len2) ? list2 : list1;
     int lenlong = (len1 > len2) ? len1 : len2;
     int lenshort = (len1 > len2) ? len2 : len1;
     int lendiff = lenlong - lenshort;
@@ -34,13 +34,12 @@ Node<char> *isIntersection(Node<char> *list1, Node<char> *list2) {
         ptrlong = ptrlong->next;
         shift++;
     }
-    
+
     // if intersection return the first intersection node
     // else return nullptr
     // once we find the intersection node, the rest of linked list is identical
     while (ptrlong && ptrshort) {
-        if (ptrlong == ptrshort)
-            return ptrlong;
+        if (ptrlong == ptrshort) return ptrlong;
 
         ptrlong = ptrlong->next;
         ptrshort = ptrshort->next;
@@ -72,11 +71,8 @@ int main() {
     list1->next->next = connect;
     list2->next->next->next = connect;
 
-
     Node<char> *inter = isIntersection(list1, list2);
-    if (inter) {
-        std::cout << inter->data << std::endl;
-    }
+    if (inter) { std::cout << inter->data << std::endl; }
 
     removeNodes(&list1);
 
