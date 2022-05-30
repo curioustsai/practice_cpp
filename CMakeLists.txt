@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(ctci)
+project(practice_cpp)
 
 # set(CMAKE_C_COMPILER "/usr/bin/gcc")
 # set(CMAKE_CXX_COMPILER "/usr/bin/g++")
@@ -13,10 +13,6 @@ endif()
 get_filename_component(PROJECT_ROOT "./" ABSOLUTE)
 
 get_filename_component(BUILD_OUTPUT_DIR "${PROJECT_ROOT}/build" ABSOLUTE)
-
-get_filename_component(CTCI "${PROJECT_ROOT}/ctci" ABSOLUTE)
-
-get_filename_component(LEETCODE "${PROJECT_ROOT}/leetcode" ABSOLUTE)
 
 ### GoogleTest ###
 include(FetchContent)

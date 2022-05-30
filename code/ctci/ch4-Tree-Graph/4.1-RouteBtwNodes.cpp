@@ -15,8 +15,8 @@ public:
 
         que.push(from);
         while (!que.empty()) {
-            int p = que.front();
             que.pop();
+            int p = que.front();
             // arrive the destination
             if (p == to) { return true; }
             visited[p] = true;
@@ -36,12 +36,12 @@ private:
 
 int main(void) {
     /*
-	 * Test graph : 
-	 * 0 <---4---->1
-	 * ^ 			^
-	 * |			|
-	 * |			|
-     * 5---->2---->3 
+     * Test graph :
+     * 0 <---4----> 1
+     * ^            ^
+     * |            |
+     * |            |
+     * 5---->2----> 3
      */
 
     Graph* graph = new Graph(6);
