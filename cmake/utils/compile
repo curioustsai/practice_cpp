@@ -44,7 +44,7 @@ do
     case "$i"
     in
         -j)
-            NUMBER_JOBS=$2; shift
+            NUMBER_JOBS=$((2)); shift
             shift
             ;;
         -c)
