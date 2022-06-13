@@ -5,16 +5,16 @@ set -e
 
 SCRIPT=$0
 PROJECT_ROOT=$(realpath $(dirname $SCRIPT)/../.. )
-CMAKE_WORK_DIR=${PROJECT_ROOT}/build
 
 NUMBER_JOBS=8
 DO_CLEAN=NO
 DO_CTEST=NO
 CPPCHECK=NO
+BUILD_TYPE=Release
 
 printHelp() {
     echo "Usage: "
-    echo "$SCRIPT [-j <njobs>] [-c] [-h]"
+    echo "$SCRIPT [-j <njobs>] [-c] [-b {Release | Debug}] [-h]"
     echo ""
     echo "    -j            How many compilation units will be done simultaneously. Default is 4."
     echo "    -c            Do clean before build"
@@ -35,16 +35,20 @@ ccheck() {
     fi
 }
 
-SHORT_OPTIONS="j:cht"
+SHORT_OPTIONS="j:b:cht"
 LONG_OPTTIONS="cppcheck"
-ARGS=$(getopt -o $SHORT_OPTIONS --long $LONG_OPTTIONS -- $*)
+ARGS=$(getopt -u -o $SHORT_OPTIONS --long $LONG_OPTTIONS -- $*)
 set -- $ARGS
 for i
 do
     case "$i"
     in
         -j)
-            NUMBER_JOBS=$((2)); shift
+            NUMBER_JOBS=$2; shift
+            shift
+            ;;
+        -b)
+            BUILD_TYPE=$2; shift
             shift
             ;;
         -c)
@@ -62,13 +66,18 @@ do
     esac
 done
 
+CMAKE_WORK_DIR=${PROJECT_ROOT}/build/${BUILD_TYPE}
+
 [ ${DO_CLEAN} == "YES" ] && rm -rf ${CMAKE_WORK_DIR}
 
 [ ! -d $CMAKE_WORK_DIR ] && mkdir ${CMAKE_WORK_DIR}
 
 cd ${CMAKE_WORK_DIR}
-cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ${PROJECT_ROOT} -G Ninja \
+cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+    -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -G Ninja \
+    ${PROJECT_ROOT} \
     && ninja -j ${NUMBER_JOBS}
 
 ctest
+
 [ ${CPPCHECK} == "YES" ] && ccheck
