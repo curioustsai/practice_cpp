@@ -10,7 +10,7 @@ NUMBER_JOBS=8
 DO_CLEAN=NO
 DO_CTEST=NO
 CPPCHECK=NO
-BUILD_TYPE=Release
+BUILD_TYPE=Debug
 
 printHelp() {
     echo "Usage: "
