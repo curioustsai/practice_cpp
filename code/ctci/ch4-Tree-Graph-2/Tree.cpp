@@ -1,3 +1,8 @@
+// Collection of tree practice
+// TODO:
+// FindSuccessor
+// RemoveNode
+
 #include <gtest/gtest.h>
 #include <iostream>
 #include <queue>
@@ -32,6 +37,37 @@ void Postorder(Node* tree) {
     Inorder(tree->left);
     Inorder(tree->right);
     cout << tree->data << endl;
+}
+
+void DeleteTree(Node* tree) {
+    if (tree == nullptr) return;
+    DeleteTree(tree->left);
+    DeleteTree(tree->right);
+
+    delete tree;
+    tree = nullptr;
+}
+
+void serializeTree(Node* n, FILE* fp) {
+    if (n == nullptr) {
+        fprintf(fp, "%d ", INT32_MAX);
+        return;
+    }
+
+    fprintf(fp, "%d ", n->data);
+    serializeTree(n->left, fp);
+    serializeTree(n->right, fp);
+}
+
+void deserializeTree(Node*& n, FILE* fp) {
+    int val;
+    if (!fscanf(fp, "%d ", &val) || val == INT32_MAX) return;
+
+    n = new Node(val);
+    deserializeTree(n->left, fp);
+    deserializeTree(n->right, fp);
+
+    return;
 }
 
 Node* create_bst(vector<int>& arr, int start, int end) {
@@ -124,6 +160,32 @@ int checkHeight(Node* tree) {
 }
 
 int isBalance(Node* tree) { return checkHeight(tree) != INT32_MIN; }
+
+class TreeTest : public testing::Test {
+protected:
+    void SetUp() override {
+        vector<int> v = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        bst = create_bst(v, 0, v.size() - 1);
+    }
+
+    void TearDown() override { DeleteTree(bst); }
+
+    Node* bst;
+};
+
+TEST_F(TreeTest, inorder) { Inorder(bst); }
+TEST_F(TreeTest, serialize) {
+    FILE* fw = fopen("serialize.txt", "w");
+    serializeTree(bst, fw);
+    Inorder(bst);
+    fclose(fw);
+
+    FILE* fr = fopen("serialize.txt", "r");
+    Node* nn;
+    deserializeTree(nn, fr);
+    fclose(fr);
+    Inorder(nn);
+}
 
 TEST(tree, isBalance) {
     Node* tree = new Node(3);
