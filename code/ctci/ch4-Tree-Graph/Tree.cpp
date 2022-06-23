@@ -1,7 +1,6 @@
 // Collection of tree practice
 // TODO:
 // FindSuccessor
-// RemoveNode
 
 #include <gtest/gtest.h>
 #include <iostream>
@@ -46,6 +45,76 @@ void DeleteTree(Node* tree) {
 
     delete tree;
     tree = nullptr;
+}
+
+Node* InsertNode(Node* root, int data) {
+    if (root == nullptr) return new Node(data);
+    if (root->data > data) {
+        root->left = InsertNode(root->left, data);
+    } else {
+        root->right = InsertNode(root->right, data);
+    }
+    return root;
+}
+
+// input: tree root and key value
+// output: the root after remove value
+Node* DeleteNode(Node* root, int value) {
+    if (root == nullptr) return nullptr;
+
+    if (root->data > value) {
+        return DeleteNode(root->left, value);
+    } else if (root->data < value) {
+        return DeleteNode(root->right, value);
+    }
+
+    // hit the node
+    if (root->right == nullptr) {
+        // condition 1. only left child
+        Node* temp = root->left;
+        free(root);
+        return temp;
+    } else if (root->left == nullptr) {
+        // condition 2. only right child
+        Node* temp = root->right;
+        free(root);
+        return temp;
+    } else {
+        // conditoin 3. both left and right exist
+
+        // find the mimum value as successor
+        Node* succParanet = root;
+        Node* succ = root->right;
+        while (succ->left != nullptr) {
+            succParanet = succ;
+            succ = succ->left;
+        }
+
+        // link node before delete
+        if (succParanet != root) {
+            //  successorParent(root)
+            //                 \
+            //                  Node
+            //                /        \
+            //       successorParent    Node
+            //         /         \
+            //      successor   Node
+            //      /     \
+            //   nullptr successor->right
+            succParanet->left = succ->right;
+        } else {
+            //  successorParent(root)
+            //                 \
+            //               successor
+            //                /      \
+            //              nullptr   successor->right
+            succParanet->right = succ->right;
+        }
+        // replace root with successor
+        root->data = succ->data;
+        delete succ;
+        return root;
+    }
 }
 
 void serializeTree(Node* n, FILE* fp) {
@@ -161,16 +230,43 @@ int checkHeight(Node* tree) {
 
 int isBalance(Node* tree) { return checkHeight(tree) != INT32_MIN; }
 
+void DisplayTrtee(Node* tree) {
+    vector<vector<Node*>> list = DepthIter2(tree);
+    for (vector<Node*> l : list) {
+        for (Node* n : l) {
+            if (n != nullptr)
+                cout << n->data << ", ";
+            else
+                cout << "np, ";
+        }
+        cout << endl;
+    }
+}
+
 class TreeTest : public testing::Test {
 protected:
     void SetUp() override {
         vector<int> v = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         bst = create_bst(v, 0, v.size() - 1);
+
+        bst2 = InsertNode(bst2, 8);
+        bst2 = InsertNode(bst2, 3);
+        bst2 = InsertNode(bst2, 10);
+        bst2 = InsertNode(bst2, 1);
+        bst2 = InsertNode(bst2, 6);
+        bst2 = InsertNode(bst2, 14);
+        bst2 = InsertNode(bst2, 4);
+        bst2 = InsertNode(bst2, 7);
+        bst2 = InsertNode(bst2, 13);
     }
 
-    void TearDown() override { DeleteTree(bst); }
+    void TearDown() override {
+        DeleteTree(bst);
+        DeleteTree(bst2);
+    }
 
-    Node* bst;
+    Node* bst{nullptr};
+    Node* bst2{nullptr};
 };
 
 TEST_F(TreeTest, inorder) { Inorder(bst); }
@@ -185,6 +281,12 @@ TEST_F(TreeTest, serialize) {
     deserializeTree(nn, fr);
     fclose(fr);
     Inorder(nn);
+}
+
+TEST_F(TreeTest, DeleteNode) {
+    DisplayTrtee(bst2);
+    DeleteNode(bst2, 6);
+    DisplayTrtee(bst2);
 }
 
 TEST(tree, isBalance) {
@@ -225,34 +327,3 @@ TEST(tree, DepthIter) {
         cout << endl;
     }
 }
-
-// TEST(tree, create_bst) {
-//     vector<int> v = {0, 1, 2, 3, 4, 5, 6, 7, 8};
-//     Node* bst = create_bst(v, 0, v.size() - 1);
-
-//     Preorder(bst);
-// }
-
-// TEST(Tree, Preorder) {
-//     Node* tree = new Node(2);
-//     tree->left = new Node(4);
-//     tree->right = new Node(6);
-
-//     Preorder(tree);
-// }
-
-// TEST(Tree, Inorder) {
-//     Node* tree = new Node(2);
-//     tree->left = new Node(4);
-//     tree->right = new Node(6);
-
-//     Inorder(tree);
-// }
-
-// TEST(Tree, Postorder) {
-//     Node* tree = new Node(2);
-//     tree->left = new Node(4);
-//     tree->right = new Node(6);
-
-//     Postorder(tree);
-// }

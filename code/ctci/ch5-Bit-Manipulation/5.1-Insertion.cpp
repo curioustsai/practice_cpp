@@ -1,38 +1,6 @@
 // Two 32-bit numbers, N, M and two bit position i and j.
 // Write a method to insert M into N such that M start at bit j and at bit i.
 
-// review of bit operation
-
-// clear bit i
-// x &= ~(1 << i)
-
-// toggle bit i
-// x ^= (1 << i)
-
-// get bit i of x
-// x & (1 << i)
-
-// set bit i of x
-// x |= (1 << i)
-
-// bitwise and
-// 0, 0, 0
-// 1, 0, 0
-// 0, 1, 0
-// 1, 1, 1
-
-// bitwise or
-// 0, 0, 0
-// 1, 0, 1
-// 0, 1, 1
-// 1, 1, 1
-
-// bitwise xor
-// 0, 0, 0
-// 1, 0, 1
-// 0, 1, 1
-// 1, 1, 0
-
 #include <iostream>
 #include <string>
 
