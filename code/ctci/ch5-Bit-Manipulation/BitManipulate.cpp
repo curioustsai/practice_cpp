@@ -50,3 +50,18 @@ TEST(BitManipulation, toggleBit) {
     res = toggleBit(res, 5);
     ASSERT_EQ(stringifyBit(res), "10011010010");
 }
+
+void swap(int& x, int& y) {
+    x = x ^ y;
+    y = x ^ y;
+    x = x ^ y;
+}
+
+TEST(BitManipulation, swap) {
+    int a = 1234;
+    int b = 5678;
+    swap(a, b);
+
+    ASSERT_EQ(a, 5678);
+    ASSERT_EQ(b, 1234);
+}
