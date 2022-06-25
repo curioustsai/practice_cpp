@@ -283,31 +283,17 @@ TEST_F(TreeTest, serialize) {
     Inorder(nn);
 }
 
+TEST_F(TreeTest, isBalance) {
+
+    DisplayTrtee(bst2);
+
+    ASSERT_EQ(isBalance(bst2), false);
+}
+
 TEST_F(TreeTest, DeleteNode) {
     DisplayTrtee(bst2);
     DeleteNode(bst2, 6);
     DisplayTrtee(bst2);
-}
-
-TEST(tree, isBalance) {
-    Node* tree = new Node(3);
-    tree->left = new Node(1);
-    tree->left->right = new Node(2);
-    tree->left->right->left = new Node(0);
-    tree->right = new Node(4);
-
-    vector<vector<Node*>> list = DepthIter2(tree);
-    for (vector<Node*> l : list) {
-        for (Node* n : l) {
-            if (n != nullptr)
-                cout << n->data << ", ";
-            else
-                cout << "np, ";
-        }
-        cout << endl;
-    }
-
-    ASSERT_EQ(isBalance(tree), false);
 }
 
 TEST(tree, DepthIter) {

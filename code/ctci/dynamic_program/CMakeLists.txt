@@ -1,3 +1,6 @@
 project(dynamic_program)
 
-register_test(fibonacci.cpp)
+file(GLOB CPP_SOURCE *.cpp)
+foreach(SRC ${CPP_SOURCE})
+  register_test(${SRC})
+endforeach()
