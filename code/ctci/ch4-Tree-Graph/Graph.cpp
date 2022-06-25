@@ -1,6 +1,3 @@
-// TODO:
-// Dijkstra algorithm
-// A* algorithm
 #include <gtest/gtest.h>
 #include <iostream>
 #include <queue>
