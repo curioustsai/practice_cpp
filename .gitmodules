@@ -10,3 +10,6 @@
 [submodule "doc/coding-interview-university"]
 	path = doc/coding-interview-university
 	url = git@github.com:ui-richard/coding-interview-university.git
+[submodule "ref/Leetcode-blind-75"]
+	path = ref/Leetcode-blind-75
+	url = https://github.com/Shaunak04/Leetcode-blind-75
