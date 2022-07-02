@@ -1,2 +1,5 @@
 add_subdirectory(Array)
 add_subdirectory(Binary)
+add_subdirectory(LinkedList)
+add_subdirectory(DynamicProgramming)
+add_subdirectory(Matrix)
