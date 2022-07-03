@@ -13,6 +13,7 @@ using namespace std;
 
 class Solution {
 public:
+    // Reminder: aware of zero headings
     uint32_t reverseBit(uint32_t n) {
         uint32_t res = 0;
         for (int count = 0; count < 32; count++) {
