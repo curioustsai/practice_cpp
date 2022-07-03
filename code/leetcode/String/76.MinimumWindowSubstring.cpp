@@ -1,0 +1,55 @@
+/*
+Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window.
+If there is no such substring, return the empty string "".
+The testcases will be generated such that the answer is unique.
+A substring is a contiguous sequence of characters within the string.
+*/
+
+#include <gtest/gtest.h>
+
+#include <string>
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    // https://leetcode.com/problems/minimum-window-substring/discuss/26808/Here-is-a-10-line-template-that-can-solve-most-'substring'-problems
+    // sliding window
+    string minWindows(string s, string t) {
+        vector<int> maps(128, 0);
+        for (auto c : t) maps[c]++;
+        int counter = t.size(), begin = 0, end = 0, d = INT32_MAX, head = 0;
+        while (end < s.size()) {
+            if (maps[s[end++]]-- > 0) counter--;
+            while (counter == 0) {
+                if (end - begin < d) d = end - (head = begin);
+                if (maps[s[begin++]]++ == 0) counter++;
+            }
+        }
+        return (d == INT32_MAX) ? "" : s.substr(head, d);
+    }
+};
+
+TEST(MinWindows, Example1) {
+    Solution sol;
+    string s = "ADOBECODEBANC";
+    string t = "ABC";
+    string output = "BANC";
+    ASSERT_EQ(sol.minWindows(s, t), output);
+}
+
+TEST(MinWindows, Example2) {
+    Solution sol;
+    string s = "a";
+    string t = "a";
+    string output = "a";
+    ASSERT_EQ(sol.minWindows(s, t), output);
+}
+
+TEST(MinWindows, Example3) {
+    Solution sol;
+    string s = "a";
+    string t = "aa";
+    string output = "";
+    ASSERT_EQ(sol.minWindows(s, t), output);
+}
