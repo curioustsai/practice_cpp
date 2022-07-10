@@ -78,6 +78,13 @@ cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
     ${PROJECT_ROOT} \
     && ninja -j ${NUMBER_JOBS}
 
+# # with compilation options
+# cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+#     # -DCMAKE_CXX_FLAGS="-fsanitize=address" \
+#     -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -G Ninja \
+#     ${PROJECT_ROOT} \
+#     && ninja -j ${NUMBER_JOBS}
+
 ctest
 
 [ ${CPPCHECK} == "YES" ] && ccheck

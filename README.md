@@ -36,12 +36,12 @@
 - [x] [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/) (Review)
 - [x] [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/) (Review)
 - [x] [Word Break Problem](https://leetcode.com/problems/word-break/) (Review)
-- [ ] [Combination Sum](https://leetcode.com/problems/combination-sum-iv/)
-- [ ] [House Robber](https://leetcode.com/problems/house-robber/)
-- [ ] [House Robber II](https://leetcode.com/problems/house-robber-ii/)
-- [ ] [Decode Ways](https://leetcode.com/problems/decode-ways/)
-- [ ] [Unique Paths](https://leetcode.com/problems/unique-paths/)
-- [ ] [Jump Game](https://leetcode.com/problems/jump-game/)
+- [x] [Combination Sum](https://leetcode.com/problems/combination-sum-iv/)
+- [x] [House Robber](https://leetcode.com/problems/house-robber/)
+- [x] [House Robber II](https://leetcode.com/problems/house-robber-ii/)
+- [x] [Decode Ways](https://leetcode.com/problems/decode-ways/)
+- [x] [Unique Paths](https://leetcode.com/problems/unique-paths/)
+- [x] [Jump Game](https://leetcode.com/problems/jump-game/)
 
 ---
 
@@ -60,11 +60,11 @@
 
 ## Interval
 
-- [ ] [Insert Interval](https://leetcode.com/problems/insert-interval/)
-- [ ] [Merge Intervals](https://leetcode.com/problems/merge-intervals/)
-- [ ] [Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/)
-- [ ] [Meeting Rooms (Leetcode Premium)](https://leetcode.com/problems/meeting-rooms/)
-- [ ] [Meeting Rooms II (Leetcode Premium)](https://leetcode.com/problems/meeting-rooms-ii/)
+- [x] [Insert Interval](https://leetcode.com/problems/insert-interval/)
+- [x] [Merge Intervals](https://leetcode.com/problems/merge-intervals/)
+- [x] [Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/)
+- [x] [Meeting Rooms (Leetcode Premium)](https://leetcode.com/problems/meeting-rooms/)
+- [x] [Meeting Rooms II (Leetcode Premium)](https://leetcode.com/problems/meeting-rooms-ii/)
 
 ---
 
@@ -108,20 +108,20 @@ Review sliding window trick
 ---
 
 ## Tree
-- [ ] [Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
-- [ ] [Same Tree](https://leetcode.com/problems/same-tree/)
-- [ ] [Invert/Flip Binary Tree](https://leetcode.com/problems/invert-binary-tree/)
-- [ ] [Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/)
-- [ ] [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/)
-- [ ] [Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)
-- [ ] [Subtree of Another Tree](https://leetcode.com/problems/subtree-of-another-tree/)
-- [ ] [Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
-- [ ] [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/)
-- [ ] [Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
-- [ ] [Lowest Common Ancestor of BST](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)
-- [ ] [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)
-- [ ] [Add and Search Word](https://leetcode.com/problems/add-and-search-word-data-structure-design/)
-- [ ] [Word Search II](https://leetcode.com/problems/word-search-ii/)
+- [x] [Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
+- [x] [Same Tree](https://leetcode.com/problems/same-tree/)
+- [x] [Invert/Flip Binary Tree](https://leetcode.com/problems/invert-binary-tree/)
+- [x] [Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/)
+- [x] [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/)
+- [x] [Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)
+- [x] [Subtree of Another Tree](https://leetcode.com/problems/subtree-of-another-tree/)
+- [x] [Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
+- [x] [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/)
+- [x] [Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
+- [x] [Lowest Common Ancestor of BST](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)
+- [x] [Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)
+- [x] [Add and Search Word](https://leetcode.com/problems/add-and-search-word-data-structure-design/)
+- [x] [Word Search II](https://leetcode.com/problems/word-search-ii/)
 
 ---
 
