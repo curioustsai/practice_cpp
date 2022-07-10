@@ -7,6 +7,7 @@ Merge all the linked-lists into one sorted linked-list and return it.
 
 #include <gtest/gtest.h>
 #include <iostream>
+#include <queue>
 
 using namespace std;
 
@@ -46,6 +47,33 @@ public:
             l2->next = mergeTwoList(l2->next, l1);
             return l2;
         }
+    }
+
+    // https://leetcode.com/problems/merge-k-sorted-lists/discuss/10527/Difference-between-Priority-Queue-and-Heap-and-C%2B%2B-implementation
+    // priority queue B-implementation
+
+    struct compare {
+        bool operator()(const ListNode* a, const ListNode* b) { return a->val > b->val; }
+    };
+    ListNode* mergeKLists2(vector<ListNode*>& list) {
+        priority_queue<ListNode*, vector<ListNode*>, compare> pq;
+
+        for (auto l : list) { pq.push(l); }
+
+        if (pq.empty()) return nullptr;
+
+        ListNode* res = pq.top();
+        pq.pop();
+        if (res->next) pq.push(res->next);
+        ListNode* tail = res;
+        while (!pq.empty()) {
+            tail->next = pq.top();
+            pq.pop();
+            tail = tail->next;
+            if (tail->next) pq.push(tail->next);
+        }
+
+        return res;
     }
 
     void insertNode(ListNode*& head, int val) {
