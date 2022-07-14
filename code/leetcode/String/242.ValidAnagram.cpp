@@ -29,6 +29,22 @@ public:
         }
         return true;
     }
+
+    bool isAnagramHash(string s, string t) {
+        if (s.length() != t.length()) return false;
+        unordered_map<char, int> maps;
+
+        int n = s.length();
+        for (int i = 0; i < n; i++) {
+            maps[s[i]]++;
+            maps[t[i]]--;
+        }
+
+        for (auto it = maps.begin(); it != maps.end(); it++) {
+            if (it->second) return false;
+        }
+        return true;
+    }
 };
 
 TEST(IsAnagram, Example1) {
@@ -36,7 +52,7 @@ TEST(IsAnagram, Example1) {
     string s = "anagram";
     string t = "nagaram";
 
-    ASSERT_EQ(sol.isAnagram(s, t), true);
+    ASSERT_EQ(sol.isAnagramHash(s, t), true);
 }
 
 TEST(IsAnagram, Example2) {
@@ -44,5 +60,5 @@ TEST(IsAnagram, Example2) {
     string s = "rat";
     string t = "car";
 
-    ASSERT_EQ(sol.isAnagram(s, t), false);
+    ASSERT_EQ(sol.isAnagramHash(s, t), false);
 }

@@ -1,6 +1,9 @@
 /*
 Given an array of strings strs, group the anagrams together. You can return the answer in any order.
 An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+Solution:
+https://leetcode.com/problems/group-anagrams/discuss/19200/C%2B%2B-unordered_map-and-counting-sort
 */
 
 #include <gtest/gtest.h>
@@ -14,15 +17,10 @@ using namespace std;
 
 class Solution {
 public:
-    // https://leetcode.com/problems/group-anagrams/discuss/19200/C%2B%2B-unordered_map-and-counting-sort
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
         unordered_map<string, vector<string>> mp;
-        // for (string s : strs) {
-        //     string t = s;
-        //     sort(t.begin(), t.end());
-        //     mp[t].push_back(s);
-        // }
         for (string s : strs) { mp[strSort(s)].push_back(s); }
+
         vector<vector<string>> anagrams;
         for (auto p : mp) { anagrams.push_back(p.second); }
         return anagrams;

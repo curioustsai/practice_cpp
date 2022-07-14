@@ -2,6 +2,9 @@
 Given a string s, return the number of palindromic substrings in it.
 A string is a palindrome when it reads the same backward as forward.
 A substring is a contiguous sequence of characters within the string.
+
+Solution:
+https://leetcode.com/problems/palindromic-substrings/discuss/105689/Java-solution-8-lines-extendPalindrome
 */
 
 #include <gtest/gtest.h>
@@ -10,7 +13,6 @@ using namespace std;
 
 class Solution {
 public:
-    // https://leetcode.com/problems/palindromic-substrings/discuss/105689/Java-solution-8-lines-extendPalindrome
     int countSubstrings(string s) {
         int counter = 0;
         int n = s.size();

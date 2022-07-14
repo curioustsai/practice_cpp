@@ -5,12 +5,32 @@ Given a string s, find the length of the longest substring without repeating cha
 #include <gtest/gtest.h>
 
 #include <string>
+#include <unordered_map>
 #include <vector>
+
 using namespace std;
 
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
+        int res = 0;
+
+        for (int j = 0; j < s.size(); j++) {
+            int count = 0;
+            unordered_map<char, int> maps;
+
+            for (int i = j; i < s.size(); i++) {
+                if (maps.find(s[i]) != maps.end()) break;
+                maps[s[i]]++;
+                count++;
+            }
+            res = max(res, count);
+        }
+
+        return res;
+    }
+
+    int lengthOfLongestSubstring2(string s) {
         int res = 0;
 
         for (int j = 0; j < s.size(); j++) {

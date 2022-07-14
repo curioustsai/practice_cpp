@@ -1,5 +1,8 @@
 /*
 Given a string s, return the longest palindromic substring in s.
+
+Solution:
+https://leetcode.com/problems/longest-palindromic-substring/discuss/2923/Simple-C%2B%2B-solution-(8ms-13-lines)
 */
 
 #include <gtest/gtest.h>
@@ -8,7 +11,6 @@ using namespace std;
 
 class Solution {
 public:
-    // https://leetcode.com/problems/longest-palindromic-substring/discuss/2923/Simple-C%2B%2B-solution-(8ms-13-lines)
     string longestPalindrome(string s) {
         if (s.length() <= 1) return "";
 

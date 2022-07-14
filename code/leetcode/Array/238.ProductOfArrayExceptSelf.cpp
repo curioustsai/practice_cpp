@@ -40,7 +40,7 @@ public:
             fromLast[i] = fromLast[i - 1] * nums[n - i];
         }
 
-        for (int i = 0; i < n; i++) { res[i] = fromBegin[i] * fromLast[i]; }
+        for (int i = 0; i < n; i++) { res[i] = fromBegin[i] * fromLast[n - 1 - i]; }
         return res;
     }
 
@@ -60,18 +60,20 @@ public:
     }
 };
 
-TEST(ContainsDuplicate, Test1) {
+TEST(ProductExceptSelf, Test1) {
     Solution sol;
     vector<int> nums = {1, 2, 3, 4};
     vector<int> ans = {24, 12, 8, 6};
 
-    ASSERT_EQ(equal(ans.begin(), ans.end(), sol.productExceptSelf(nums).begin()), true);
+    //ASSERT_EQ(equal(ans.begin(), ans.end(), sol.productExceptSelf(nums).begin()), true);
+    ASSERT_EQ(ans, sol.productExceptSelf(nums));
 }
 
-TEST(ContainsDuplicate, Test2) {
+TEST(ProductExceptSelf, Test2) {
     Solution sol;
     vector<int> nums = {-1, 1, 0, -3, 3};
     vector<int> ans = {0, 0, 9, 0, 0};
 
-    ASSERT_EQ(equal(ans.begin(), ans.end(), sol.productExceptSelf(nums).begin()), true);
+    //ASSERT_EQ(equal(ans.begin(), ans.end(), sol.productExceptSelf(nums).begin()), true);
+    ASSERT_EQ(ans, sol.productExceptSelf(nums));
 }

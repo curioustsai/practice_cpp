@@ -16,6 +16,15 @@
  * strip
  * upper
  * lower
+ * to_string: int to string
+ * stoi: string to int
+
+ string a = string(5, 'a'); a is 'aaaaa'
+ 
+ char
+ isdigit(c)
+ isalpha(c)
+
  */
 
 using namespace std;

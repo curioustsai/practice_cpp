@@ -47,14 +47,14 @@
 
 ## Graph
 
-- [ ] [Clone Graph](https://leetcode.com/problems/clone-graph/)
-- [ ] [Course Schedule](https://leetcode.com/problems/course-schedule/)
-- [ ] [Pacific Atlantic Water Flow](https://leetcode.com/problems/pacific-atlantic-water-flow/)
-- [ ] [Number of Islands](https://leetcode.com/problems/number-of-islands/)
-- [ ] [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/)
-- [ ] [Alien Dictionary (Leetcode Premium)](https://leetcode.com/problems/alien-dictionary/)
-- [ ] [Graph Valid Tree (Leetcode Premium)](https://leetcode.com/problems/graph-valid-tree/)
-- [ ] [Number of Connected Components in an Undirected Graph (Leetcode Premium)](https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/)
+- [x] [Clone Graph](https://leetcode.com/problems/clone-graph/)
+- [x] [Course Schedule](https://leetcode.com/problems/course-schedule/)
+- [x] [Pacific Atlantic Water Flow](https://leetcode.com/problems/pacific-atlantic-water-flow/)
+- [x] [Number of Islands](https://leetcode.com/problems/number-of-islands/)
+- [x] [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/)
+- [x] [Alien Dictionary (Leetcode Premium)](https://leetcode.com/problems/alien-dictionary/)
+- [x] [Graph Valid Tree (Leetcode Premium)](https://leetcode.com/problems/graph-valid-tree/)
+- [x] [Number of Connected Components in an Undirected Graph (Leetcode Premium)](https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/)
 
 ---
 
@@ -95,13 +95,13 @@ Review: double pointer, dump node tricks
 Review sliding window trick
 
 - [x] [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
-- [x] [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/)
+- [ ] [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/)
 - [x] [Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/)
 - [x] [Valid Anagram](https://leetcode.com/problems/valid-anagram/)
 - [x] [Group Anagrams](https://leetcode.com/problems/group-anagrams/)
 - [x] [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)
 - [x] [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)
-- [x] [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)
+- [ ] [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)
 - [x] [Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings/)
 - [x] [Encode and Decode Strings (Leetcode Premium)](https://leetcode.com/problems/encode-and-decode-strings/)
 
@@ -127,9 +127,9 @@ Review sliding window trick
 
 ## Heap
 
-- [ ] [Merge K Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
-- [ ] [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)
-- [ ] [Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)
+- [x] [Merge K Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
+- [x] [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)
+- [x] [Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)
 
 ## Important Link:
 [14 Patterns to Ace Any Coding Interview Question](https://hackernoon.com/14-patterns-to-ace-any-coding-interview-question-c5bb3357f6ed)
