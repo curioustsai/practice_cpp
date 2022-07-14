@@ -1,3 +1,5 @@
+//https://leetcode.com/problems/two-sum/
+
 #include <gtest/gtest.h>
 
 #include <algorithm>
@@ -33,6 +35,28 @@ public:
     }
 
     // complexity: O(nlogn)
+    vector<int> twoSum22(vector<int> &L, int target) {
+        vector<int> result(2, 0);
+
+        sort(L.begin(), L.end());
+        int i = 0, j = L.size() - 1;
+
+        while (i < j) {
+            if (L[i] + L[j] > target) {
+                j--;
+            } else if (L[i] + L[j] < target) {
+                i++;
+            } else {
+                result[0] = i;
+                result[1] = j;
+                break;
+            }
+        }
+
+        return result;
+    }
+
+    // complexity: O(nlogn)
     vector<int> twoSum2(vector<int> &L, int target) {
         vector<int> result(2, 0);
 
@@ -41,8 +65,10 @@ public:
 
         if (L[0] + L[length] > target) return result;
 
+        // binary search not the best choice, but work
         for (size_t i = 0; i < L.size(); i++) {
             int res = target - L[i];
+
             int j = binary_search(L, res);
             if (j != -1) {
                 result[0] = i;
@@ -55,6 +81,7 @@ public:
     }
 
     // version3: hash
+    // complexity: O(n), since hash search is O(1)
     vector<int> twoSum3(vector<int> &L, int target) {
         vector<int> result(2, 0);
         unordered_map<int, int> hash;
@@ -104,7 +131,7 @@ TEST(TwoSum, Test1) {
     vector<int> res = sol.twoSum3(L, target);
     vector<int> ans = {0, 1};
 
-    for (int i = 0; i < ans.size(); i++) { ASSERT_EQ(ans[i], res[i]); }
+    ASSERT_EQ(ans, res);
 }
 
 TEST(TwoSum, Test2) {
@@ -114,7 +141,7 @@ TEST(TwoSum, Test2) {
     vector<int> res = sol.twoSum3(L, target);
     vector<int> ans = {1, 2};
 
-    for (int i = 0; i < ans.size(); i++) { ASSERT_EQ(ans[i], res[i]); }
+    ASSERT_EQ(ans, res);
 }
 
 TEST(TwoSum, Test3) {
@@ -124,5 +151,5 @@ TEST(TwoSum, Test3) {
     vector<int> res = sol.twoSum3(L, target);
     vector<int> ans = {0, 1};
 
-    for (int i = 0; i < ans.size(); i++) { ASSERT_EQ(ans[i], res[i]); }
+    ASSERT_EQ(ans, res);
 }

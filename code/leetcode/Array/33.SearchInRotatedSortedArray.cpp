@@ -1,11 +1,3 @@
-#include <gtest/gtest.h>
-
-#include <algorithm>
-#include <iostream>
-#include <vector>
-
-using namespace std;
-
 /*
 There is an integer array nums sorted in ascending order (with distinct values).
 Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 <= k < nums.length) such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed). 
@@ -17,6 +9,13 @@ Solution
 https://leetcode.com/problems/search-in-rotated-sorted-array/discuss/2196530/C%2B%2B-MOST-INTUITIVE-APPROACH-w-VISUAL-and-BREAKDOWN-O(log(n))
 
 */
+#include <gtest/gtest.h>
+
+#include <algorithm>
+#include <iostream>
+#include <vector>
+
+using namespace std;
 
 class Solution {
 public:

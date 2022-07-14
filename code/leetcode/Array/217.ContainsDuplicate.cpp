@@ -1,3 +1,7 @@
+/*
+Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+*/
+//https://leetcode.com/problems/contains-duplicate/
 #include <gtest/gtest.h>
 
 #include <algorithm>
@@ -9,6 +13,7 @@ using namespace std;
 
 class Solution {
 public:
+    // Complexity O(nlogn)
     bool containsDuplicate(vector<int>& nums) {
         sort(nums.begin(), nums.end());
 
@@ -19,6 +24,8 @@ public:
         return false;
     }
 
+    // Time Complexity: O(n)
+    // Space Complexity: O(n)
     bool containsDuplicateHash(vector<int>& nums) {
         map<int, bool> dict;
 
