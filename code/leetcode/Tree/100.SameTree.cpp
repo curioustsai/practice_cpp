@@ -1,6 +1,8 @@
 /*
 Given the roots of two binary trees p and q, write a function to check if they are the same or not.
 Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
+
+https://leetcode.com/problems/same-tree/
 */
 
 #include <gtest/gtest.h>
@@ -19,15 +21,6 @@ struct TreeNode {
 
 class Solution {
 public:
-    TreeNode *invertTree(TreeNode *root) {
-        if (root == nullptr) return nullptr;
-        TreeNode *root_inv = new TreeNode(root->val, root->right, root->left);
-        root_inv->left = invertTree(root->right);
-        root_inv->right = invertTree(root->left);
-
-        return root_inv;
-    }
-
     bool isSameTree(TreeNode *p, TreeNode *q) {
         if (p == nullptr || q == nullptr) return (p == q);
         return (p->val == q->val) && isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
@@ -69,37 +62,51 @@ public:
     }
 };
 
-TEST(InvertTree, Example1) {
+TEST(SameTree, Example1) {
     Solution sol;
-    TreeNode *root = nullptr;
-    root = new TreeNode(4);
-    root->left = new TreeNode(2);
-    root->left->left = new TreeNode(1);
-    root->left->right = new TreeNode(3);
-    root->right = new TreeNode(7);
-    root->right->left = new TreeNode(6);
-    root->right->right = new TreeNode(9);
+    TreeNode *root1 = nullptr, *root2 = nullptr;
+    sol.insertNode(root1, 1);
+    sol.insertNode(root1, 2);
+    sol.insertNode(root1, 3);
+    sol.insertNode(root2, 1);
+    sol.insertNode(root2, 2);
+    sol.insertNode(root2, 3);
 
-    TreeNode *invert1 = sol.invertTree(root);
-    TreeNode *invert2 = sol.invertTree(invert1);
-    ASSERT_EQ(sol.isSameTree(root, invert2), true);
-    sol.deleteTree(root);
-    sol.deleteTree(invert1);
-    sol.deleteTree(invert2);
+    ASSERT_EQ(sol.isSameTree(root1, root2), true);
+    sol.deleteTree(root1);
+    sol.deleteTree(root2);
 }
 
-TEST(InvertTree, Example2) {
+TEST(SameTree, Example2) {
     Solution sol;
-    TreeNode *root = nullptr;
+    TreeNode *root1 = nullptr;
+    TreeNode *root2 = nullptr;
 
-    sol.insertNode(root, 2);
-    sol.insertNode(root, 1);
-    sol.insertNode(root, 3);
+    root1 = new TreeNode(1);
+    root1->left = new TreeNode(2);
 
-    TreeNode *invert1 = sol.invertTree(root);
-    TreeNode *invert2 = sol.invertTree(invert1);
-    ASSERT_EQ(sol.isSameTree(root, invert2), true);
-    sol.deleteTree(root);
-    sol.deleteTree(invert1);
-    sol.deleteTree(invert2);
+    root2 = new TreeNode(1);
+    root2->right = new TreeNode(2);
+
+    ASSERT_EQ(sol.isSameTree(root1, root2), false);
+    sol.deleteTree(root1);
+    sol.deleteTree(root2);
+}
+
+TEST(SameTree, Example3) {
+    Solution sol;
+    TreeNode *root1 = nullptr;
+    TreeNode *root2 = nullptr;
+
+    root1 = new TreeNode(1);
+    root1->left = new TreeNode(2);
+    root1->right = new TreeNode(1);
+
+    root2 = new TreeNode(1);
+    root2->left = new TreeNode(1);
+    root2->right = new TreeNode(2);
+
+    ASSERT_EQ(sol.isSameTree(root1, root2), false);
+    sol.deleteTree(root1);
+    sol.deleteTree(root2);
 }

@@ -1,6 +1,10 @@
 /*
-Given the root of a binary tree, return its maximum depth.
-A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+Given two integer arrays preorder and inorder 
+where preorder is the preorder traversal of a binary tree 
+and inorder is the inorder traversal of the same tree,
+construct and return the binary tree.
+
+https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
 */
 
 #include <gtest/gtest.h>

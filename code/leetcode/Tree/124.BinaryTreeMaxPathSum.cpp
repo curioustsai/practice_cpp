@@ -3,6 +3,8 @@ A path in a binary tree is a sequence of nodes where each pair of adjacent nodes
 A node can only appear in the sequence at most once. Note that the path does not need to pass through the root.
 The path sum of a path is the sum of the node's values in the path.
 Given the root of a binary tree, return the maximum path sum of any non-empty path.
+
+https://leetcode.com/problems/binary-tree-maximum-path-sum/
 */
 
 #include <gtest/gtest.h>
@@ -22,17 +24,17 @@ struct TreeNode {
 class Solution {
 public:
     // https://leetcode.com/problems/binary-tree-maximum-path-sum/discuss/603072/C%2B%2B-solution-O(n)-with-detailed-explanation
-    int max_sum = INT32_MIN;
-    int max_gain(TreeNode *root) {
+    int max_gain(TreeNode *root, int &max_sum) {
         if (!root) return 0;
-        int l = max(max_gain(root->left), 0);
-        int r = max(max_gain(root->right), 0);
+        int l = max(max_gain(root->left, max_sum), 0);
+        int r = max(max_gain(root->right, max_sum), 0);
         int new_price = root->val + l + r;
         max_sum = max(max_sum, new_price);
         return root->val + max(l, r);
     }
     int maxPathSum(TreeNode *root) {
-        max_gain(root);
+        int max_sum = INT32_MIN;
+        max_gain(root, max_sum);
         return max_sum;
     }
 };
