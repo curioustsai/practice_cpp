@@ -19,6 +19,7 @@ struct ListNode {
 
 class Solution {
 public:
+    // iterative method
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
         if (list1 == nullptr) return list2;
         if (list2 == nullptr) return list1;
@@ -44,6 +45,20 @@ public:
         ptr = dump->next;
         delete dump;
         return ptr;
+    }
+
+    // recursive method
+    ListNode* mergeTwoList(ListNode* l1, ListNode* l2) {
+        if (l1 == nullptr) return l2;
+        if (l2 == nullptr) return l1;
+
+        if (l1->val < l2->val) {
+            l1->next = mergeTwoList(l1->next, l2);
+            return l1;
+        } else {
+            l2->next = mergeTwoList(l2->next, l1);
+            return l2;
+        }
     }
 
     void insertNode(ListNode*& head, int val) {

@@ -51,7 +51,6 @@ public:
 
     // https://leetcode.com/problems/merge-k-sorted-lists/discuss/10527/Difference-between-Priority-Queue-and-Heap-and-C%2B%2B-implementation
     // priority queue B-implementation
-
     struct compare {
         bool operator()(const ListNode* a, const ListNode* b) { return a->val > b->val; }
     };
@@ -59,7 +58,6 @@ public:
         priority_queue<ListNode*, vector<ListNode*>, compare> pq;
 
         for (auto l : list) { pq.push(l); }
-
         if (pq.empty()) return nullptr;
 
         ListNode* res = pq.top();

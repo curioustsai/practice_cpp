@@ -4,10 +4,15 @@ L0 → L1 → … → Ln - 1 → Ln
 Reorder the list to be on the following form:
 L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
 You may not modify the values in the list's nodes. Only nodes themselves may be changed.
+
+
+https://leetcode.com/problems/reorder-list/
 */
 
 #include <gtest/gtest.h>
+
 #include <iostream>
+#include <stack>
 
 using namespace std;
 
@@ -21,13 +26,40 @@ struct ListNode {
 
 class Solution {
 public:
+    // Time complexity O(n), space complexity O(n)
     void reorderList(ListNode* head) {
+        if (head == nullptr || head->next == nullptr) return;
+
+        stack<ListNode*> st;
+        ListNode* ptr = head;
+        int size = 0;
+
+        while (ptr) {
+            st.push(ptr);
+            ptr = ptr->next;
+            size++;
+        }
+
+        ptr = head;
+        for (int i = 0; i < size / 2; i++) {
+            ListNode* top = st.top();
+            st.pop();
+            ListNode* next = ptr->next;
+            ptr->next = top;
+            top->next = next;
+            ptr = next;
+        }
+        ptr->next = nullptr;
+    }
+
+    // Time complexity O(n), space complexity O(1)
+    void reorderList2(ListNode* head) {
         if (head == nullptr || head->next == nullptr) return;
         ListNode* fast = head;
         ListNode* slow = head;
 
         // find middle
-        while (fast->next != nullptr && fast->next->next != nullptr) {
+        while (fast != nullptr && fast->next != nullptr) {
             slow = slow->next;
             fast = fast->next->next;
         }
