@@ -1,5 +1,14 @@
-// https://medium.com/@ChYuan/leetcode-269-alien-dictionary-%E5%BF%83%E5%BE%97-hard-7b04656b7569
-// https://www.tutorialspoint.com/alien-dictionary-in-cplusplus
+/*
+There is a new alien language which uses the latin alphabet.
+However, the order among letters are unknown to you.
+You receive a list of non-empty words from the dictionary, where words are sorted lexicographically by the rules of this new language.
+Derive the order of letters in this language.
+
+keyword: topological sort
+
+https://medium.com/@ChYuan/leetcode-269-alien-dictionary-%E5%BF%83%E5%BE%97-hard-7b04656b7569
+https://www.tutorialspoint.com/alien-dictionary-in-cplusplus
+*/
 #include <gtest/gtest.h>
 
 #include <queue>
@@ -10,8 +19,8 @@ using namespace std;
 
 class Solution {
 public:
-    // bfs
     string alienOrder(vector<string>& words) {
+        // build graph and indegree
         map<char, int> degree;
         map<char, vector<char>> graph;
         int n = words.size();
@@ -33,10 +42,12 @@ public:
         string ret = "";
         queue<char> q;
         map<char, int>::iterator it = degree.begin();
+        // start with those 0 indegree points
         while (it != degree.end()) {
             if (it->second == 0) { q.push(it->first); }
             it++;
         }
+
         while (!q.empty()) {
             char x = q.front();
             q.pop();

@@ -3,6 +3,14 @@ There are a total of numCourses courses you have to take, labeled from 0 to numC
 You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.
 For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
 Return true if you can finish all courses. Otherwise, return false
+
+https://leetcode.com/problems/course-schedule/
+
+Detect cycle in a graph
+https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
+
+Detect cycle in a undirected graph
+https://www.geeksforgeeks.org/detect-cycle-undirected-graph
 */
 
 #include <gtest/gtest.h>
@@ -34,6 +42,7 @@ public:
         vector<int> degrees = computeIndgrees(g);
 
         for (int i = 0; i < numCourses; i++) {
+            // find those indgree are 0, and remove their connection
             int j = 0;
             while (j < numCourses) {
                 if (!degrees[j++]) break;
@@ -49,32 +58,35 @@ public:
 
     bool canFinish_dfs(int numCourses, vector<vector<int>>& prerequisites) {
         vector<vector<int>> g = buildGraph(numCourses, prerequisites);
-        vector<bool> tovisit(numCourses, false);
         vector<bool> visited(numCourses, false);
+        vector<bool> rec(numCourses, false);
 
         for (int i = 0; i < numCourses; i++) {
-            if (!visited[i] && !acyclic(g, tovisit, visited, i)) { return false; }
+            if (!visited[i] && cyclic(g, visited, rec, i, -1)) { return false; }
         }
 
         return true;
     }
 
-    bool acyclic(vector<vector<int>>& g, vector<bool>& tovisit, vector<bool>& visited, int node) {
-        // not visited && to be visited, good.
-        // clean node, impossible to be cyclic, return false directly
-        if (tovisit[node]) return false;
+    bool cyclic(vector<vector<int>>& g, vector<bool>& visited, vector<bool>& rec, int node,
+                int parent) {
 
-        // not visited at first but visited back, definitely a cyclic, return true
-        if (visited[node]) return true;
+        if (!visited[node]) {
+            visited[node] = true;
+            rec[node] = true;
 
-        tovisit[node] = visited[node] = true;
-
-        for (int v : g[node]) {
-            if (!acyclic(g, tovisit, visited, v)) { return false; }
+            for (int v : g[node]) {
+                if (!visited[v] && cyclic(g, visited, rec, v, node)) {
+                    return true;
+                } else if (rec[v]) {
+                    return true;
+                }
+            }
         }
-        tovisit[node] = false;
 
-        return true;
+        rec[node] = false;
+
+        return false;
     }
 
 private:

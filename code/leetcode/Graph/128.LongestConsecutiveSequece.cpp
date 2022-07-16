@@ -1,3 +1,9 @@
+/*
+Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
+You must write an algorithm that runs in O(n) time
+
+https://leetcode.com/problems/longest-consecutive-sequence/
+*/
 #include <gtest/gtest.h>
 
 #include <algorithm>
@@ -8,6 +14,7 @@ using namespace std;
 
 class Solution {
 public:
+    // Time Complexity O(n), use set
     int longestConsecutiveSequence(vector<int>& nums) {
         if (nums.empty()) return 0;
 
