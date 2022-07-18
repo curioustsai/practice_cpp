@@ -1,8 +1,11 @@
 /*
 Given two strings text1 and text2, return the length of their longest common subsequence. If there is no common subsequence, return 0.
 A subsequence of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.
+
 For example, "ace" is a subsequence of "abcde".
 A common subsequence of two strings is a subsequence that is common to both strings.
+
+https://leetcode.com/problems/longest-common-subsequence/
 */
 
 #include <gtest/gtest.h>
@@ -20,11 +23,7 @@ public:
         int m = text1.size();
         int n = text2.size();
 
-        vector<vector<int>> dp;
-        for (int c = 0; c <= m; c++) {
-            vector<int> v(n + 1, 0);
-            dp.push_back(v);
-        }
+        vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {

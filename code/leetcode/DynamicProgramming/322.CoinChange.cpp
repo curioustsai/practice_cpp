@@ -21,13 +21,12 @@ public:
     int coinChange(vector<int>& coins, int amount) {
         int max = amount + 1;
         vector<int> dp(amount + 1, max);
+
         dp[0] = 0;
         for (int i = 1; i <= amount; i++) {
             for (int c : coins) {
-
                 // residue is negative, break
                 if (i - c < 0) break;
-
                 // min btw dp[i-c] + 1 & dp[i]
                 dp[i] = std::min(dp[i - c] + 1, dp[i]);
             }
