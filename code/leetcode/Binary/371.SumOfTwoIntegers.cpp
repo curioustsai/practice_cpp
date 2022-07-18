@@ -15,6 +15,12 @@ public:
         }
         return a;
     }
+
+    int getSum2(int a, int b) {
+        int carry = a & b;
+        int sum = a ^ b;
+        return getSum2(sum, carry);
+    }
 };
 
 TEST(Binary, getSum) {
