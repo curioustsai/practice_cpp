@@ -1,5 +1,7 @@
 /*
 Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+
+https://leetcode.com/problems/top-k-frequent-elements/
 */
 
 #include <gtest/gtest.h>
@@ -12,6 +14,26 @@ using namespace std;
 
 class Solution {
 public:
+    vector<int> topKFrequent_bucket(vector<int>& nums, int k) {
+        vector<int> res;
+        unordered_map<int, int> map;
+        for (int n : nums) { map[n]++; }
+
+        vector<vector<int>> bucket(nums.size() + 1);
+        for (auto it = map.begin(); it != map.end(); it++) {
+            bucket[it->second].push_back(it->first);
+        }
+
+        for (int i = bucket.size() - 1; i >= 0; --i) {
+            for (int j = 0; j < bucket[i].size(); ++j) {
+                res.push_back(bucket[i][j]);
+                if (res.size() == k) return res;
+            }
+        }
+
+        return res;
+    }
+
     vector<int> topKFrequent(vector<int>& nums, int k) {
         vector<int> res;
         unordered_map<int, int> map;
