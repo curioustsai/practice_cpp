@@ -24,19 +24,19 @@ public:
         vector<vector<int>> res;
         if (root == nullptr) return res;
 
-        queue<TreeNode *> q, q_next;
-        q_next.push(root);
+        queue<TreeNode *> q;
+        q.push(root);
 
-        while (!q_next.empty()) {
-            swap(q, q_next);
+        while (!q.empty()) {
             vector<int> v;
-            while (!q.empty()) {
+            int size = q.size();
+            while (size--) {
                 TreeNode *n = q.front();
                 q.pop();
                 v.push_back(n->val);
 
-                if (n->left != nullptr) q_next.push(n->left);
-                if (n->right != nullptr) q_next.push(n->right);
+                if (n->left != nullptr) q.push(n->left);
+                if (n->right != nullptr) q.push(n->right);
             }
             res.push_back(v);
         }

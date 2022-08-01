@@ -22,7 +22,7 @@ class Solution {
 public:
     TreeNode *invertTree(TreeNode *root) {
         if (root == nullptr) return nullptr;
-        TreeNode *root_inv = new TreeNode(root->val, root->right, root->left);
+        TreeNode *root_inv = new TreeNode(root->val);
         root_inv->left = invertTree(root->right);
         root_inv->right = invertTree(root->left);
 
