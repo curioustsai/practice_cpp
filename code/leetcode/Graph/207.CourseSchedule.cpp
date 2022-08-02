@@ -62,21 +62,20 @@ public:
         vector<bool> rec(numCourses, false);
 
         for (int i = 0; i < numCourses; i++) {
-            if (!visited[i] && cyclic(g, visited, rec, i, -1)) { return false; }
+            if (!visited[i] && cyclic(g, visited, rec, i)) { return false; }
         }
 
         return true;
     }
 
-    bool cyclic(vector<vector<int>>& g, vector<bool>& visited, vector<bool>& rec, int node,
-                int parent) {
+    bool cyclic(vector<vector<int>>& g, vector<bool>& visited, vector<bool>& rec, int node) {
 
         if (!visited[node]) {
             visited[node] = true;
             rec[node] = true;
 
             for (int v : g[node]) {
-                if (!visited[v] && cyclic(g, visited, rec, v, node)) {
+                if (!visited[v] && cyclic(g, visited, rec, v)) {
                     return true;
                 } else if (rec[v]) {
                     return true;

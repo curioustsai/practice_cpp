@@ -56,7 +56,9 @@ public:
 
 private:
     int _capacity{0};
+    // <key, iterator>
     unordered_map<int, list<pair<int, int>>::iterator> um;
+    // <key, value>
     list<pair<int, int>> l;
 };
 
