@@ -88,3 +88,5 @@ cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
 ctest
 
 [ ${CPPCHECK} == "YES" ] && ccheck
+
+exit 0
