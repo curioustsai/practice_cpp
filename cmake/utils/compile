@@ -70,7 +70,7 @@ CMAKE_WORK_DIR=${PROJECT_ROOT}/build/${BUILD_TYPE}
 
 [ ${DO_CLEAN} == "YES" ] && rm -rf ${CMAKE_WORK_DIR}
 
-[ ! -d $CMAKE_WORK_DIR ] && mkdir ${CMAKE_WORK_DIR}
+[ ! -d ${CMAKE_WORK_DIR} ] && mkdir -p ${CMAKE_WORK_DIR}
 
 cd ${CMAKE_WORK_DIR}
 cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
@@ -88,3 +88,5 @@ cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
 ctest
 
 [ ${CPPCHECK} == "YES" ] && ccheck
+
+exit 0
