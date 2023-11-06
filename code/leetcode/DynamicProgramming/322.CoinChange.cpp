@@ -19,20 +19,19 @@ using namespace std;
 class Solution {
 public:
     int coinChange(vector<int>& coins, int amount) {
-        int max = amount + 1;
-        vector<int> dp(amount + 1, max);
+        vector<int> dp(amount + 1, 1e5);
 
         dp[0] = 0;
         for (int i = 1; i <= amount; i++) {
             for (int c : coins) {
                 // residue is negative, break
-                if (i - c < 0) break;
+                if (i - c < 0) continue;
                 // min btw dp[i-c] + 1 & dp[i]
                 dp[i] = std::min(dp[i - c] + 1, dp[i]);
             }
         }
 
-        return dp[amount] > amount ? -1 : dp[amount];
+        return dp[amount] == 1e5 ? -1 : dp[amount];
     }
 };
 
@@ -57,5 +56,13 @@ TEST(CoinChange, ExampleIII) {
     vector<int> input = {1};
     int amount = 0;
     uint32_t ans = 0;
+    ASSERT_EQ(sol.coinChange(input, amount), ans);
+}
+
+TEST(CoinChange, ExampleIV) {
+    Solution sol;
+    vector<int> input = {474,83,404,3};
+    int amount = 264;
+    uint32_t ans = 8;
     ASSERT_EQ(sol.coinChange(input, amount), ans);
 }

@@ -35,6 +35,7 @@ public:
     }
 
     // complexity: O(nlogn)
+    // not an answer, cannot sort because it will change index
     vector<int> twoSum22(vector<int> &L, int target) {
         vector<int> result(2, 0);
 
@@ -57,6 +58,7 @@ public:
     }
 
     // complexity: O(nlogn)
+    // not an answer, cannot sort because it will change index
     vector<int> twoSum2(vector<int> &L, int target) {
         vector<int> result(2, 0);
 
