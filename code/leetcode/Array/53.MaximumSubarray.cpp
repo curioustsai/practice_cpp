@@ -12,6 +12,21 @@ using namespace std;
 
 class Solution {
 public:
+    // Time complexity: O(n^2)
+    int maxSubArray_bruteforce(vector<int>& nums) {
+        int cur_sum = 0;
+        int max_sum = 0;
+
+        for (int i = 0; i < nums.size(); i++) {
+            for (int j = i; j < nums.size(); j++) {
+                cur_sum += nums[j];
+                max_sum = max(max_sum, cur_sum);
+            }
+        }
+        return max_sum;
+    }
+
+    // Time complexity: O(n)
     int maxSubArray(vector<int>& nums) {
         int curr_sum = nums[0];
         int max_sum = curr_sum;
@@ -20,6 +35,31 @@ public:
             curr_sum = max(curr_sum + nums[i], nums[i]);
             max_sum = max(curr_sum, max_sum);
         }
+
+        return max_sum;
+    }
+    
+    // Follow up question, show the subarray, index
+    int maxSubArrayIndex(vector<int>& nums) {
+        int curr_sum = nums[0];
+        int max_sum = curr_sum;
+        int start = 0, end = 0, s = 0;
+
+        for (int i = 1; i < nums.size(); i++) {
+            curr_sum = curr_sum + nums[i];
+            if (curr_sum < nums[i]) {
+                s = i;
+                curr_sum = nums[i];
+            }
+            
+            if (curr_sum > max_sum) {
+                max_sum = curr_sum;
+                start = s;
+                end = i;
+            }
+        }
+
+        cout << "start: " << start << " end: " << end << endl;
 
         return max_sum;
     }

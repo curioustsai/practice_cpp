@@ -5,6 +5,37 @@
 [Leetcode blind 75](https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions)
 [Neetcode](https://neetcode.io/practice)
 
+# Review
+- Binary search
+
+- Graphs, BFS/DFS/Flood fill
+
+- Tree traversals
+
+- Hash tables
+
+- Linked list, stacks, queues, two pointers/sliding window
+
+- Binary heaps
+
+- Dynamic programming
+
+- Union find
+
+- Ad hoc/string manipulations
+
+- Arrays
+
+- Recursion, backtracking, Greedy algorithms
+
+- Other good to know topics: Trie, segment trees/fenwick trees, bitmasks
+
+- String I/O
+
+### Review Topics
+- [Kandane's Algorithm](https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/)
+- Detect cyclic in a graph, topology sort
+
 ## Array
 
 - [x] [Two Sum](https://leetcode.com/problems/two-sum/)

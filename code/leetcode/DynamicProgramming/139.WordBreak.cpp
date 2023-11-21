@@ -33,7 +33,7 @@ public:
         return false;
     }
 
-    // skip too long execution
+    // memorize, skip too long execution
     bool wordBreak2(string s, vector<string>& wordDict) {
         set<string> wordSet(wordDict.begin(), wordDict.end());
         vector<int> memo(s.size(), -1);
@@ -51,6 +51,32 @@ public:
         }
         memo[start] = 0;
         return memo[start];
+    }
+
+    // dp version
+    bool wordBreak(string s, vector<string>& wordDict) {
+        set<string> words;
+        for (int i = 0; i < wordDict.size(); i++) {
+            words.insert(wordDict[i]);
+        }
+        
+        int n = s.size();
+        vector<bool> dp(n + 1);
+        dp[0] = true;
+        
+        for (int i = 1; i <= n; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                if (dp[j]) {
+                    string word = s.substr(j, i - j);
+                    if (words.find(word) != words.end()) {
+                        dp[i] = true;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        return dp[n];
     }
 };
 
@@ -76,4 +102,12 @@ TEST(WordBreak, ExampleIII) {
     vector<string> wordDict = {"cats", "dog", "sand", "and", "cat"};
 
     ASSERT_EQ(sol.wordBreak(input, wordDict), false);
+}
+
+TEST(WordBreak, ExampleIV) {
+    Solution sol;
+    string input = "a";
+    vector<string> wordDict = {"a"};
+
+    ASSERT_EQ(sol.wordBreak(input, wordDict), true);
 }

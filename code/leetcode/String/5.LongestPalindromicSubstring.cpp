@@ -40,6 +40,31 @@ public:
 
         return s.substr(begin, strlen);
     }
+
+    string longestPalindrome2(string s) { 
+        int start = 0;
+        int length = 1;
+        
+        for (int i = 0; i < s.size() - 1; i++) {
+            middleOut(s, i, i, start, length);
+            middleOut(s, i, i+1, start, length);
+        }
+
+        return s.substr(start, length);
+    }
+
+    void middleOut(string s, int left, int right, int& start, int& length) {
+        while (left >= 0 && right < s.size() && s[left] == s[right]) {
+            left--;
+            right++;
+        }
+
+        if (right - left - 1 > length) {
+            start = left + 1;
+            length = right - left - 1;
+        }
+    }
+
 };
 
 TEST(VadlidPalindrome, Example1) {

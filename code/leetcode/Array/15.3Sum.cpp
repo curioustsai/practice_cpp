@@ -61,7 +61,7 @@ public:
         return res;
     }
 
-    // reference opt
+    // reference opt, time complexity O(n^2)
     vector<vector<int>> threeSum_opt2(vector<int>& nums) {
         vector<vector<int>> res;
         if (nums.size() < 3) {

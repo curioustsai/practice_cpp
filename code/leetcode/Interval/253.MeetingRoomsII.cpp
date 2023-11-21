@@ -35,6 +35,24 @@ public:
 
         return res;
     }
+
+    int minMeetingRooms(vector<vector<int>> &intervals) {
+        map<int, int> m;
+        for (auto & interval: intervals) {
+            m[interval[0]]++;
+            m[interval[1]]--;
+        }
+
+        int res = 0, room = 0;
+        // map<int, int>::iterator it;
+        // for (it = m.begin(); it !=m.end(); it++) {
+        //     res = max(res, room += it->second);
+        // }
+        for (auto it: m) {
+            res = max(res, room += it.second);
+        }
+        return res;
+    } 
 };
 
 TEST(MeetingRoomI, ExampleI) {

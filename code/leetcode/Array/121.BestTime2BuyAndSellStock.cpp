@@ -59,6 +59,24 @@ public:
 
         return maxprofit;
     }
+
+    int maxProfit2(vector<int>& prices) {
+        int maxProfit = 0;
+        int minPrice = INT32_MAX;
+
+        vector<int> trade_day(2, 0);
+
+        for (int i = 0; i < prices.size(); i++) {
+            if (prices[i] -  minPrice > maxProfit) {
+                maxProfit = prices[i] -  minPrice;
+                trade_day[1] = i;
+            } else if (prices[i] < minPrice) {
+                minPrice = prices[i];
+                trade_day[0] = i;
+            }
+        }
+        return maxProfit;
+    }
 };
 
 TEST(BestTime2BuyAndSellStock, Test1) {

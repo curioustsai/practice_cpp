@@ -58,6 +58,7 @@ public:
                 maps[s[begin]]++;
 
                 // s[begin] in string t, break the loop
+                // only characters in string t will be > 0; otherwise maximum equals 0.
                 if (maps[s[begin]] > 0) { counter++; }
                 begin++;
             }
