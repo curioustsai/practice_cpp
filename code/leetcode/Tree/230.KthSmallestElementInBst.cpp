@@ -19,6 +19,24 @@ struct TreeNode {
 
 class Solution {
 public:
+    // utilize inorder traverse, more intuitive
+    int kthSmallest2(TreeNode *root, int k) {
+        int result;
+        helper(root, k, result);
+        return result;
+    }
+
+    void helper(TreeNode* root, int& k, int& result) {
+        if (!root) return;
+
+        helper(root->left, k, result);
+        k--;
+        if (k == 0) {
+            result = root->val;
+            return;
+        }
+        helper(root->right, k, result);
+    }
     // https://leetcode.com/problems/kth-smallest-element-in-a-bst/discuss/63673/4-Lines-in-C%2B%2B.
     int kthSmallest(TreeNode *root, int k) { return find(root, k); }
 
@@ -72,7 +90,7 @@ TEST(KthSmallest, Example1) {
     root->left->right = new TreeNode(2);
     root->right = new TreeNode(4);
 
-    ASSERT_EQ(sol.kthSmallest(root, 1), 1);
+    ASSERT_EQ(sol.kthSmallest2(root, 1), 1);
 }
 
 TEST(KthSmallest, Example2) {
@@ -84,5 +102,5 @@ TEST(KthSmallest, Example2) {
     root->left->right = new TreeNode(4);
     root->right = new TreeNode(6);
 
-    ASSERT_EQ(sol.kthSmallest(root, 3), 3);
+    ASSERT_EQ(sol.kthSmallest2(root, 3), 3);
 }
