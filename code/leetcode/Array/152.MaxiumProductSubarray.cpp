@@ -14,6 +14,19 @@ using namespace std;
 
 class Solution {
 public:
+    int maxProduct_bruteForce(vector<int>& nums) {
+      int maxProd = INT32_MIN;
+      for (int i = 0; i < nums.size(); i++) {
+        int product = 1;
+        for (int j = i; j < nums.size(); j++) {
+          product *= nums[j];
+          maxProd = max(product, maxProd);
+        }
+      }
+      return maxProd;
+    }
+
+    // kadane's algorithm
     int maxProduct(vector<int>& nums) {
         int ans = nums[0];
         int maxPos = ans;

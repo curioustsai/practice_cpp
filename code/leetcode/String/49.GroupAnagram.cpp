@@ -27,6 +27,7 @@ public:
     }
 
 private:
+    // this function can be replaced with sort(s.begin(), s.end())
     string strSort(string s) {
         int counter[26] = {0};
         for (char c : s) { counter[c - 'a']++; }

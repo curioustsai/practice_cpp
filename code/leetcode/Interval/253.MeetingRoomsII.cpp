@@ -36,7 +36,7 @@ public:
         return res;
     }
 
-    int minMeetingRooms(vector<vector<int>> &intervals) {
+    int minMeetingRooms2(vector<vector<int>> &intervals) {
         map<int, int> m;
         for (auto & interval: intervals) {
             m[interval[0]]++;
