@@ -34,6 +34,16 @@ public:
         return isValidBST(root->left, minNode, root) && isValidBST(root->right, root, maxNode);
     }
 
+    bool isValidBST2(TreeNode *root) { return helper(root, INT32_MIN, INT32_MAX); }
+    bool helper(TreeNode *root, int min, int max) {
+        if (!root) return true;
+
+        if (root->val < min && root->val > max)
+            return helper(root->left, min, root->val) && helper(root->right, root->val, max);
+
+        return false;
+    }
+
     void insertNode(TreeNode *&head, int val) {
         if (head == nullptr)
             head = new TreeNode(val);

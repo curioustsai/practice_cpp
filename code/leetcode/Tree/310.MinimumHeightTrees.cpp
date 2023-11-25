@@ -11,6 +11,7 @@ Return a list of all MHTs' root labels. You can return the answer in any order.
 The height of a rooted tree is the number of edges on the longest downward path between the root and a leaf.
 
 https://leetcode.com/problems/minimum-height-trees/
+https://leetcode.com/problems/minimum-height-trees/solutions/1630778/c-simple-solution-topological-sort-w-explanation/
 */
 
 #include <gtest/gtest.h>
@@ -22,7 +23,7 @@ using namespace std;
 
 class Solution {
 public:
-    // topo sort
+    // topology sort
     vector<int> findMinHeightTrees(int n, vector<vector<int>>& edges) {
         vector<vector<int>> graph(n);
         vector<int> indegree(n, 0), ans;
@@ -33,6 +34,7 @@ public:
             indegree[edge[0]]++;
             indegree[edge[1]]++;
         }
+        // start with leaf node ( indegree == 1)
         for (int i = 0; i < n; i++) {
             if (indegree[i] == 1) {
                 q.push(i);
@@ -40,6 +42,7 @@ public:
             }
         }
 
+        // ans record the node level by level
         while (!q.empty()) {
             ans.clear();
             int size = q.size();
@@ -54,6 +57,7 @@ public:
                 }
             }
         }
+        // ans with the final middle nodes
         //If only 1 node in the graph, the min height is 0, with root being '0'
         if (n == 1) ans.push_back(0);
         return ans;
