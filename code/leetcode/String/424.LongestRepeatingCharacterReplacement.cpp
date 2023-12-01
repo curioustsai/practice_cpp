@@ -30,6 +30,7 @@ public:
 
             // length of substring = end - start + 1
             // (length of substring - number of times of the maximum occurring character in the substring) <= k
+            // sliding window, shrinking
             while (end - start - maxCount + 1 > k) {
                 int index_s = s[start] - 'A';
                 count[index_s]--;
