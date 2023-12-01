@@ -54,7 +54,7 @@ public:
     }
 
     // dp version
-    bool wordBreak(string s, vector<string>& wordDict) {
+    bool wordBreak_dp(string s, vector<string>& wordDict) {
         set<string> words;
         for (int i = 0; i < wordDict.size(); i++) {
             words.insert(wordDict[i]);

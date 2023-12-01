@@ -102,7 +102,7 @@ TEST(WordSearchII, Example1) {
 
 TEST(WordSearchII, Example2) {
     Solution sol;
-    vector<vector<char>> board2(2, vector<char>(2, 0));
+    vector<vector<char>> board2;
     board2.push_back({'a', 'b'});
     board2.push_back({'c', 'd'});
 
