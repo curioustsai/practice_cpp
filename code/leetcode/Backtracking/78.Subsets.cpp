@@ -12,29 +12,11 @@ https://leetcode.com/problems/subsets/discuss/27278/C%2B%2B-RecursiveIterativeBi
 using namespace std;
 
 class Solution {
-
-    //method 1
 public:
-    // vector<vector<int>> subsets(vector<int>& nums) {
-    //     vector<vector<int>> res;
-    //     choose(nums, 0, {}, res);
-    //     return res;
-    // }
-
-    // void choose(vector<int>& nums, int index, vector<int> cur, vector<vector<int>>& res) {
-    //     if (index >= nums.size()) {
-    //         res.push_back(cur);
-    //         return;
-    //     }
-    //     choose(nums, index + 1, cur, res);
-    //     cur.push_back(nums[index]);
-    //     choose(nums, index + 1, cur, res);
-    // }
-
-    //method 2
     vector<vector<int>> subsets(vector<int>& nums) {
         vector<vector<int>> subs;
         vector<int> sub;
+
         subsets(nums, 0, sub, subs);
         return subs;
     }
