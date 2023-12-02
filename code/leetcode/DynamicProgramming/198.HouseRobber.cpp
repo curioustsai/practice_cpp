@@ -16,6 +16,16 @@ using namespace std;
 
 class Solution {
 public:
+    // Time complexity: O(2^n)
+    int rob_bruteForce(vector<int>& nums) {
+        return helper(nums, nums.size() - 1); 
+    }
+
+    int helper(vector<int>& nums, int index) {
+        if (index == 0) return nums[0];
+        else if (index == 1) return max(nums[0], nums[1]);
+        return max(helper(nums, index - 2) + nums[index], helper(nums, index - 1));
+    }
     //https://leetcode.com/problems/house-robber/discuss/156523/From-good-to-great.-How-to-approach-most-of-DP-problems.
     int rob(vector<int>& nums) {
         vector<int> money(nums.size() + 1, 0);

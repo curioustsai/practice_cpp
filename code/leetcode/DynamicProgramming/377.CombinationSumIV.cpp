@@ -14,7 +14,7 @@ using namespace std;
 class Solution {
 public:
     int combinationSum4(vector<int>& nums, int target) {
-        vector<unsigned int> dp(target + 1, 0);
+        vector<unsigned int> dp(target + 1, 0); // the numbers to achieve the target
         dp[0] = 1;
         for (int i = 1; i <= target; i++) {
             for (int n : nums) {
