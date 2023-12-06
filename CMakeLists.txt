@@ -33,5 +33,6 @@ include(GoogleTest)
 ### Env ###
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_ROOT}/cmake)
 include(${CMAKE_MODULE_PATH}/utils/Utils.cmake)
+set(CMAKE_INSTALL_PREFIX ${BUILD_OUTPUT_DIR}/bin)
 
 add_subdirectory(code)

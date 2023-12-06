@@ -10,6 +10,9 @@ function(register_test SRC)
     target_link_libraries(${testname} gtest_main)
 
     gtest_discover_tests(${testname})
+
+    install(TARGETS ${testname})
+
 endfunction()
 
 function(build_singleton SRC)
