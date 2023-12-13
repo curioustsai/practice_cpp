@@ -20,7 +20,7 @@ public:
         int maxArea = 0;
         
         for (int i = 0; i < n; i++) {
-            int minHeight = INT_MAX;
+            int minHeight = INT32_MAX;
             for (int j = i; j < n; j++) {
                 minHeight = min(minHeight, heights[j]);
                 maxArea = max(maxArea, minHeight * (j - i + 1));

@@ -11,6 +11,7 @@ https://leetcode.com/problems/k-closest-points-to-origin/
 #include <algorithm>
 #include <vector>
 #include <queue>
+#include <cmath>
 
 using namespace std;
 
