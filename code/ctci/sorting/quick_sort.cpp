@@ -2,44 +2,42 @@
 #include <iostream>
 #include <vector>
 
+#include <algorithm>
+
 using namespace std;
 
-void partition(vector<int>& arr, int begin, int end) {
-    // choose the midpoint as pivot
-    int mid = (begin + end) / 2;
-    int pivot = arr[mid];
+int partition(vector<int>& arr, int begin, int end) {
     int left = begin;
-    int right = end - 1;
-
-    swap(arr[mid], arr[end]);
+    int right = end;
+    int pivot = arr[begin];
 
     while (left < right) {
-        while (arr[left] < pivot) { left++; }
-        while (arr[right] > pivot) { right--; }
+        while (arr[left] < pivot && left < right) { left++; }
+        while (arr[right] > pivot && left < right) { right--; }
         swap(arr[left], arr[right]);
     }
 
-    if (arr[mid] > arr[end]) swap(arr[mid], arr[end]);
+    if (arr[begin] > arr[right]) { swap(arr[begin], arr[right]); }
+
+    return right;
 }
 
-void quick_sort(vector<int>& arr, int begin, int end) {
+void quick_sort(vector<int>& arr, int low, int high) {
     //divided and conquer
-    if (begin >= end) return;
+    if (low >= high) return;
 
-    partition(arr, begin, end);
-    int mid = (begin + end) / 2;
-    quick_sort(arr, begin, mid);
-    quick_sort(arr, mid + 1, end);
+    int pivot = partition(arr, low, high);
+    quick_sort(arr, low, pivot - 1);
+    quick_sort(arr, pivot + 1, high);
 }
 
-TEST(Sort, Quick) {
+TEST(Sorting, QuickSort) {
     vector<int> arr = {0, 5, 4, 1, 3, 8, 2, 7, 9, 6};
-    for (auto a : arr) { cout << a << " "; }
-    cout << endl;
-    // sort(arr.begin(), arr.end());
+    vector<int> ans(arr.begin(), arr.end());
 
+    // ascending
+    sort(ans.begin(), ans.end());
     quick_sort(arr, 0, arr.size() - 1);
 
-    for (auto a : arr) { cout << a << " "; }
-    cout << endl;
+    ASSERT_EQ(arr, ans);
 }
