@@ -25,7 +25,7 @@ public:
             adj[source].push_back({time, dest});
         }
 
-        vector<int> signalReceiveTime(n + 1, INT_MAX);
+        vector<int> signalReceiveTime(n + 1, INT32_MAX);
         priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
         pq.push({0, k});
 
@@ -53,10 +53,10 @@ public:
             }
         }
 
-        int result = INT_MIN;
+        int result = INT32_MIN;
         for (int i = 1; i <= n; i++) { result = max(result, signalReceiveTime[i]); }
 
-        return (result == INT_MAX) ? -1:result;
+        return (result == INT32_MAX) ? -1:result;
     }
 };
 
