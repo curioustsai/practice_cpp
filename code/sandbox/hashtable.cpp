@@ -2,11 +2,13 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 class HashEntry {
 public:
     HashEntry() = default;
-    HashEntry(std::string k, std::string v) : key(k), value(v){};
-    void SetEntry(std::string k, std::string v) {
+    HashEntry(string k, string v) : key(k), value(v){};
+    void SetEntry(string k, string v) {
         key = k;
         value = v;
     };
@@ -14,13 +16,13 @@ public:
         key.clear();
         value.clear();
     }
-    std::string GetValue() { return value; }
-    std::string GetKey() { return key; }
-    void SetValue(std::string v) { value = v; }
+    string GetValue() { return value; }
+    string GetKey() { return key; }
+    void SetValue(string v) { value = v; }
 
 private:
-    std::string key{};
-    std::string value{};
+    string key{};
+    string value{};
 };
 
 class HashTable {
@@ -35,7 +37,7 @@ public:
         delete[] table;
     }
 
-    bool Exists(std::string key) {
+    bool Exists(string key) {
         int hash = Hash(key);
         int original_index = hash;
 
@@ -46,7 +48,7 @@ public:
         }
     };
 
-    std::string GetValue(std::string key) {
+    string GetValue(string key) {
         int hash = Hash(key);
         int original_index = hash;
 
@@ -57,7 +59,7 @@ public:
         }
     }
 
-    bool Add(std::string key, std::string value) {
+    bool Add(string key, string value) {
         int hash = Hash(key);
         int original_index = hash;
 
@@ -68,7 +70,7 @@ public:
                 return true;
             } else if (table[hash]->GetKey() == key) {
                 // replace value
-                std::cout << "key: " << key << " already exist." << std::endl;
+                cout << "key: " << key << " already exist." << endl;
                 table[hash]->SetValue(value);
                 return true;
             } else {
@@ -80,7 +82,7 @@ public:
         }
     };
 
-    bool Delete(std::string key) {
+    bool Delete(string key) {
         int hash = Hash(key);
         int original_index = hash;
         while (true) {
@@ -95,7 +97,7 @@ public:
     }
 
 private:
-    int Hash(std::string key) {
+    int Hash(string key) {
         int hash = 0;
 
         for (int i = 0; i < key.size(); i++) { hash += static_cast<int>(key[i]); }
@@ -112,14 +114,14 @@ TEST(HashTable, Driver) {
     hashtable.Add("Taoyuan", "35.1");
     hashtable.Add("Taichung", "32.3");
 
-    std::cout << hashtable.GetValue("Taipei") << std::endl;
-    std::cout << hashtable.GetValue("Taoyuan") << std::endl;
-    std::cout << hashtable.GetValue("Taichung") << std::endl;
+    cout << hashtable.GetValue("Taipei") << endl;
+    cout << hashtable.GetValue("Taoyuan") << endl;
+    cout << hashtable.GetValue("Taichung") << endl;
 
-    std::cout << std::boolalpha << hashtable.Exists("Taipei") << std::endl;
-    std::cout << std::boolalpha << hashtable.Exists("Hsinchu") << std::endl;
+    cout << boolalpha << hashtable.Exists("Taipei") << endl;
+    cout << boolalpha << hashtable.Exists("Hsinchu") << endl;
 
-    std::cout << "Delete: " << std::boolalpha << hashtable.Delete("Taichung") << std::endl;
+    cout << "Delete: " << boolalpha << hashtable.Delete("Taichung") << endl;
 
-    std::cout << hashtable.GetValue("Taichung") << std::endl;
+    cout << hashtable.GetValue("Taichung") << endl;
 }
