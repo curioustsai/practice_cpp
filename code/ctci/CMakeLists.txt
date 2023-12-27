@@ -5,6 +5,6 @@
 # add_subdirectory(ch5-Bit-Manipulation)
 add_subdirectory(ch16-Medium)
 # add_subdirectory(ch17-Hard)
-add_subdirectory(sorting)
+# add_subdirectory(sorting)
 # add_subdirectory(hashtable)
 # add_subdirectory(dynamic_program)

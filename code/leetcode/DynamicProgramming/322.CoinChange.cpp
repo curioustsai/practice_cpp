@@ -1,5 +1,4 @@
 /*
-
 You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money.
 Return the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
 You may assume that you have an infinite number of each kind of coin.
@@ -10,6 +9,7 @@ Constraints:
 1 <= coins[i] <= 231 - 1
 0 <= amount <= 10e4
 
+https://leetcode.com/problems/coin-change/
 */
 
 #include <gtest/gtest.h>
@@ -32,6 +32,31 @@ public:
         }
 
         return dp[amount] == 1e5 ? -1 : dp[amount];
+    }
+};
+
+class Solution2 {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+      return dfs(coins, amount, 0);
+    }
+private:
+  vector<int> dp(amount + 1, -1);
+  int dfs(vector<int>& coins, int amount, int index) {
+    if (index >= coins.size() || amount < 0)
+      return -1;
+
+    if (amount == 0) 
+      return 0;
+
+    if (dp[amount] != -1)
+      return dp[amount];
+
+    if (coins[index] > amount) {
+      return dfs(coins, amount, index + 1);
+    } else {
+    // min btw take and not take
+      return dp[amount] = min(dfs(coins, amount - c, index) + 1, dfs(coins, amount, index +1));
     }
 };
 
