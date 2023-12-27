@@ -42,18 +42,18 @@ public:
 
 TEST(MaxSlidingWindow, Example1) {
   vector<int> nums = {1,3,-1,-3,5,3,6,7};
-  int k = 3
+  int k = 3;
   vector<int> ans = {3,3,5,5,6,7};
   Solution sol;
 
-  ASSERT(sol.maxSlidingWindow(nums, k), ans);
+  ASSERT_EQ(sol.maxSlidingWindow(nums, k), ans);
 }
 
 TEST(MaxSlidingWindow, Example2) {
   vector<int> nums = {1};
-  int k = 1
+  int k = 1;
   vector<int> ans = {1};
   Solution sol;
 
-  ASSERT(sol.maxSlidingWindow(nums, k), ans);
+  ASSERT_EQ(sol.maxSlidingWindow(nums, k), ans);
 }
