@@ -22,13 +22,10 @@ public:
 
         // monotonic descrease deque, leftmost is the largest number
         while (j < nums.size()) {
-            while (!dq.empty() && nums[j] > nums[dq.back()]) {
-                dq.pop_back();
-            }
+            while (!dq.empty() && nums[j] > nums[dq.back()]) { dq.pop_back(); }
             dq.push_back(j);
 
-            if (i > dq.front())
-                dq.pop_front();
+            if (i > dq.front()) dq.pop_front();
 
             if (j + 1 >= k) {
                 result.push_back(nums[dq.front()]);
@@ -41,19 +38,19 @@ public:
 };
 
 TEST(MaxSlidingWindow, Example1) {
-  vector<int> nums = {1,3,-1,-3,5,3,6,7};
-  int k = 3;
-  vector<int> ans = {3,3,5,5,6,7};
-  Solution sol;
+    vector<int> nums = {1, 3, -1, -3, 5, 3, 6, 7};
+    int k = 3;
+    vector<int> ans = {3, 3, 5, 5, 6, 7};
+    Solution sol;
 
-  ASSERT_EQ(sol.maxSlidingWindow(nums, k), ans);
+    ASSERT_EQ(sol.maxSlidingWindow(nums, k), ans);
 }
 
 TEST(MaxSlidingWindow, Example2) {
-  vector<int> nums = {1};
-  int k = 1;
-  vector<int> ans = {1};
-  Solution sol;
+    vector<int> nums = {1};
+    int k = 1;
+    vector<int> ans = {1};
+    Solution sol;
 
-  ASSERT_EQ(sol.maxSlidingWindow(nums, k), ans);
+    ASSERT_EQ(sol.maxSlidingWindow(nums, k), ans);
 }

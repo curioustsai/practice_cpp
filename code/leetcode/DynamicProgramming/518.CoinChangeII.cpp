@@ -13,24 +13,18 @@ using namespace std;
 
 class Solution {
 public:
-    int change(int amount, vector<int>& coins) {
-        return dfs(coins, 0, 0, amount);
-    }
+    int change(int amount, vector<int>& coins) { return dfs(coins, 0, 0, amount); }
+
 private:
     map<pair<int, int>, int> dp;
     int dfs(vector<int>& coins, int i, int sum, int amount) {
-        if (i == coins.size())
-            return 0;
+        if (i == coins.size()) return 0;
 
-        if (sum > amount)
-            return 0;
+        if (sum > amount) return 0;
 
-        if (sum == amount)
-            return 1;
-        
-        if (dp.find({i, sum}) != dp.end()) {
-            return dp[{i, sum}];
-        }
+        if (sum == amount) return 1;
+
+        if (dp.find({i, sum}) != dp.end()) { return dp[{i, sum}]; }
 
         dp[{i, sum}] = dfs(coins, i, sum + coins[i], amount) + dfs(coins, i + 1, sum, amount);
 

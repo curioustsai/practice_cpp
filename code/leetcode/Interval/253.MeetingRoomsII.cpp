@@ -38,7 +38,7 @@ public:
 
     int minMeetingRooms2(vector<vector<int>> &intervals) {
         map<int, int> m;
-        for (auto & interval: intervals) {
+        for (auto &interval : intervals) {
             m[interval[0]]++;
             m[interval[1]]--;
         }
@@ -48,11 +48,9 @@ public:
         // for (it = m.begin(); it !=m.end(); it++) {
         //     res = max(res, room += it->second);
         // }
-        for (auto it: m) {
-            res = max(res, room += it.second);
-        }
+        for (auto it : m) { res = max(res, room += it.second); }
         return res;
-    } 
+    }
 };
 
 TEST(MeetingRoomI, ExampleI) {

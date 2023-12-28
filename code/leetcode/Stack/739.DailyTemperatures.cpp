@@ -7,8 +7,8 @@
 */
 
 #include <gtest/gtest.h>
-#include <vector>
 #include <stack>
+#include <vector>
 
 using namespace std;
 
@@ -17,7 +17,7 @@ public:
     // Brute force, O(n^2)
     vector<int> dailyTemperatures_BruteForce(vector<int>& temperatures) {
         vector<int> result;
-        int n =  temperatures.size();
+        int n = temperatures.size();
 
         for (int i = 0; i < n; i++) {
             int day = 0;
@@ -36,7 +36,7 @@ public:
     // Time: O(n)
     // Space: O(n)
     vector<int> dailyTemperatures(vector<int>& temperatures) {
-        int n =  temperatures.size();
+        int n = temperatures.size();
         vector<int> result(n);
 
         // [index, temperature]
@@ -46,14 +46,13 @@ public:
             int currTemp = temperatures[i];
             int currDate = i;
 
-            while(!stack.empty() && currTemp > stack.top().second) {
+            while (!stack.empty() && currTemp > stack.top().second) {
                 int prevDate = stack.top().first;
                 stack.pop();
                 result[prevDate] = currDate - prevDate;
             }
             stack.push({currDate, currTemp});
         }
-
 
         return result;
     }

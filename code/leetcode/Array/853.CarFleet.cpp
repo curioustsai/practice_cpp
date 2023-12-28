@@ -11,9 +11,8 @@
 * https://leetcode.com/problems/car-fleet
 */
 
-
-#include <gtest/gtest.h>
 #include <algorithm>
+#include <gtest/gtest.h>
 
 using namespace std;
 

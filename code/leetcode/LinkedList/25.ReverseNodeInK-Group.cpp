@@ -14,12 +14,11 @@ using namespace std;
 
 struct ListNode {
     int val;
-    ListNode *next;
+    ListNode* next;
     ListNode() : val(0), next(nullptr) {}
     ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
+    ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
-
 
 // https://leetcode.com/problems/reverse-nodes-in-k-group/solutions/523641/c-iterative-solution-recursive-solution/
 class Solution {
@@ -27,14 +26,14 @@ public:
     // space complexity O(n)
     ListNode* reverseKGroup(ListNode* head, int k) {
         ListNode* cursor = head;
-        for(int i = 0; i < k; i++){
-            if(cursor == nullptr) return head;
+        for (int i = 0; i < k; i++) {
+            if (cursor == nullptr) return head;
             cursor = cursor->next;
         }
         ListNode* curr = head;
         ListNode* prev = nullptr;
         ListNode* nxt = nullptr;
-        for(int i = 0; i < k; i++){
+        for (int i = 0; i < k; i++) {
             nxt = curr->next;
             curr->next = prev;
             prev = curr;
@@ -56,13 +55,13 @@ public:
 
         while (true) {
             ListNode* cursor = after;
-            for(int i = 0; i < k; i++){
-                if(cursor == nullptr) return dummy->next;
+            for (int i = 0; i < k; i++) {
+                if (cursor == nullptr) return dummy->next;
                 cursor = cursor->next;
             }
             curr = after;
             prev = before;
-            for(int i = 0; i < k; i++){
+            for (int i = 0; i < k; i++) {
                 nxt = curr->next;
                 curr->next = prev;
                 prev = curr;
@@ -86,4 +85,3 @@ TEST(ReverseKGroup, Examp1) {
     Solution sol;
     sol.reverseKGroup(head, 2);
 }
-

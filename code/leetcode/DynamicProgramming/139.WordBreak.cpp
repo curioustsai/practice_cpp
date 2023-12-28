@@ -56,14 +56,12 @@ public:
     // dp version
     bool wordBreak_dp(string s, vector<string>& wordDict) {
         set<string> words;
-        for (int i = 0; i < wordDict.size(); i++) {
-            words.insert(wordDict[i]);
-        }
-        
+        for (int i = 0; i < wordDict.size(); i++) { words.insert(wordDict[i]); }
+
         int n = s.size();
         vector<bool> dp(n + 1);
         dp[0] = true;
-        
+
         for (int i = 1; i <= n; i++) {
             for (int j = i - 1; j >= 0; j--) {
                 if (dp[j]) {
@@ -75,7 +73,7 @@ public:
                 }
             }
         }
-        
+
         return dp[n];
     }
 };

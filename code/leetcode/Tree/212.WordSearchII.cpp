@@ -67,7 +67,8 @@ public:
 
     void dfs(vector<vector<char>>& board, int i, int j, Node* root, string word,
              vector<string>& res) {
-        if (i < 0 || i >= board.size() || j < 0 || j >= board[0].size() || board[i][j] == '#') return;
+        if (i < 0 || i >= board.size() || j < 0 || j >= board[0].size() || board[i][j] == '#')
+            return;
         char c = board[i][j];
         if (root->child[c - 'a'] == nullptr) return;
 

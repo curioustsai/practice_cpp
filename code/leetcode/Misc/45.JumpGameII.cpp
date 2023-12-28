@@ -20,7 +20,7 @@ public:
         int result = 0;
         int n = nums.size();
 
-        while (j < n-1) {
+        while (j < n - 1) {
             if (j + nums[j] >= n - 1) {
                 result++;
                 break;
@@ -41,7 +41,7 @@ public:
 };
 
 TEST(JumpGameII, Example1) {
-    vector<int> nums={2,3,1,1,4};
+    vector<int> nums = {2, 3, 1, 1, 4};
     int ans = 2;
     Solution sol;
 
@@ -49,7 +49,7 @@ TEST(JumpGameII, Example1) {
 }
 
 TEST(JumpGameII, Example2) {
-    vector<int> nums={2,3,0,1,4};
+    vector<int> nums = {2, 3, 0, 1, 4};
     int ans = 2;
     Solution sol;
 

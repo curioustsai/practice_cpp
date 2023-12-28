@@ -25,31 +25,32 @@ public:
         helper(candidates, target, 0, curr, res);
         return res;
     }
+
 private:
-    void helper(std::vector<int>& cands, int target, int start, std::vector<int>& curr,  std::vector<std::vector<int>>& res) {
+    void helper(std::vector<int>& cands, int target, int start, std::vector<int>& curr,
+                std::vector<std::vector<int>>& res) {
         if (target == 0) {
             res.push_back(curr);
             return;
         }
 
-        if (start >= cands.size() || target < 0)
-            return;
+        if (start >= cands.size() || target < 0) return;
 
-        for (int index = start ; index < cands.size(); index++) {
+        for (int index = start; index < cands.size(); index++) {
             curr.push_back(cands[index]);
             helper(cands, target - cands[index], index, curr, res);
             curr.pop_back();
         }
     }
 
-    void helper2(std::vector<int>& cands, int target, int start, std::vector<int>& curr,  std::vector<std::vector<int>>& res) {
+    void helper2(std::vector<int>& cands, int target, int start, std::vector<int>& curr,
+                 std::vector<std::vector<int>>& res) {
         if (target == 0) {
             res.push_back(curr);
             return;
         }
 
-        if (start >= cands.size() || target < 0)
-            return;
+        if (start >= cands.size() || target < 0) return;
 
         curr.push_back(cands[start]);
         helper(cands, target - cands[start], start, curr, res);
@@ -60,9 +61,9 @@ private:
 
 TEST(CombinationSum, Example1) {
     Solution sol;
-    vector<int> nums = {2,3,6,7};
+    vector<int> nums = {2, 3, 6, 7};
     int target = 7;
-    vector<vector<int>> ans = {{2,2,3}, {7}};
+    vector<vector<int>> ans = {{2, 2, 3}, {7}};
     vector<vector<int>> ret = sol.combinationSum(nums, target);
 
     ASSERT_EQ(ret, ans);
@@ -72,9 +73,8 @@ TEST(CombinationSum, Example2) {
     Solution sol;
     vector<int> nums = {2, 3, 5};
     int target = 8;
-    vector<vector<int>> ans = {{2,2,2,2},{2,3,3},{3,5}};
+    vector<vector<int>> ans = {{2, 2, 2, 2}, {2, 3, 3}, {3, 5}};
     vector<vector<int>> ret = sol.combinationSum(nums, target);
 
     ASSERT_EQ(ret, ans);
 }
-

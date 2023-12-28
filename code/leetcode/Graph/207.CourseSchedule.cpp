@@ -15,8 +15,8 @@ https://www.geeksforgeeks.org/detect-cycle-undirected-graph
 
 #include <gtest/gtest.h>
 
-#include <vector>
 #include <queue>
+#include <vector>
 
 using namespace std;
 
@@ -56,7 +56,7 @@ public:
         }
         return true;
     }
-    
+
     bool canFinish_bfs(int numCourses, vector<vector<int>>& prerequisites) {
         vector<vector<int>> g = buildGraph(numCourses, prerequisites);
         vector<int> indegree = computeIndgrees(g);
@@ -70,7 +70,7 @@ public:
             int v = q.front();
             q.pop();
 
-            for (int n: graph[v]) {
+            for (int n : graph[v]) {
                 indegree[n]--;
                 if (indegree[n] == 0) q.push(n);
             }

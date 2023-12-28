@@ -67,8 +67,8 @@ public:
         vector<int> trade_day(2, 0);
 
         for (int i = 0; i < prices.size(); i++) {
-            if (prices[i] -  minPrice > maxProfit) {
-                maxProfit = prices[i] -  minPrice;
+            if (prices[i] - minPrice > maxProfit) {
+                maxProfit = prices[i] - minPrice;
                 trade_day[1] = i;
             } else if (prices[i] < minPrice) {
                 minPrice = prices[i];

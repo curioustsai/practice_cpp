@@ -41,13 +41,13 @@ public:
         return s.substr(begin, strlen);
     }
 
-    string longestPalindrome2(string s) { 
+    string longestPalindrome2(string s) {
         int start = 0;
         int length = 1;
-        
+
         for (int i = 0; i < s.size() - 1; i++) {
             middleOut(s, i, i, start, length);
-            middleOut(s, i, i+1, start, length);
+            middleOut(s, i, i + 1, start, length);
         }
 
         return s.substr(start, length);
@@ -64,7 +64,6 @@ public:
             length = right - left - 1;
         }
     }
-
 };
 
 TEST(VadlidPalindrome, Example1) {

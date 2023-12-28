@@ -14,12 +14,11 @@ public:
         double curr = x;
 
         for (int exp = abs(n); exp > 0; exp /= 2) {
-            if (exp % 2 == 1)
-                result *= curr;
+            if (exp % 2 == 1) result *= curr;
             curr *= curr;
         }
 
-        return (n < 0) ? 1.0 / result:result;
+        return (n < 0) ? 1.0 / result : result;
     }
 };
 

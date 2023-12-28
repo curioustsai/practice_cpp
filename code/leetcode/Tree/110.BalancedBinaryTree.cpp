@@ -19,23 +19,21 @@ struct TreeNode {
 
 class Solution {
 public:
-    bool isBalanced(TreeNode* root) {
+    bool isBalanced(TreeNode *root) {
         int height = INT32_MIN;
         return isBalanced(root, height);
     }
 
-    bool isBalanced(TreeNode* root, int& height) {
+    bool isBalanced(TreeNode *root, int &height) {
         if (root == nullptr) {
             height = -1;
             return true;
         }
 
         int lheight, rheight;
-        if (!isBalanced(root->left, lheight) || !isBalanced(root->right, rheight))
-          return false;
+        if (!isBalanced(root->left, lheight) || !isBalanced(root->right, rheight)) return false;
 
-        if (abs(lheight-rheight) > 1) 
-            return false;
+        if (abs(lheight - rheight) > 1) return false;
 
         height = max(lheight, rheight) + 1;
         return true;

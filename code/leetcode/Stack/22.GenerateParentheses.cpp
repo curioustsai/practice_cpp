@@ -25,9 +25,7 @@ public:
             return;
         }
 
-        if (open < n)
-            helper(n, open + 1, close, curr +'(', result);
-        if (open > close)
-            helper(n, open, close + 1, curr +')', result);
+        if (open < n) helper(n, open + 1, close, curr + '(', result);
+        if (open > close) helper(n, open, close + 1, curr + ')', result);
     }
 };

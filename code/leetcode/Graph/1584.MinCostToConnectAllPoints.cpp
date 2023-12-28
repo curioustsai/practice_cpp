@@ -13,7 +13,6 @@
 
 using namespace std;
 
-
 /*
     Given array of points, return min cost to connect all points
     All points have 1 path b/w them, cost is Manhattan distance
@@ -52,20 +51,18 @@ public:
 
             // update adjacent cost
             for (int i = 0; i < n; i++) {
-                int cost = abs(points[i][0] - points[currNode][0]) + abs(points[i][1] - points[currNode][1]);
+                int cost = abs(points[i][0] - points[currNode][0]) +
+                           abs(points[i][1] - points[currNode][1]);
 
-                if (!inMST[i] && minCost[i] > cost) {
-                    minCost[i] = cost;
-                }
+                if (!inMST[i] && minCost[i] > cost) { minCost[i] = cost; }
             }
         }
         return result;
     }
 };
 
-
 TEST(MinCostConnectPoints, Example1) {
-    vector<vector<int>> points {{0,0},{2,2},{3,10},{5,2},{7,0}};
+    vector<vector<int>> points{{0, 0}, {2, 2}, {3, 10}, {5, 2}, {7, 0}};
     int ans = 20;
 
     Solution sol;
@@ -73,7 +70,7 @@ TEST(MinCostConnectPoints, Example1) {
 }
 
 TEST(MinCostConnectPoints, Example2) {
-    vector<vector<int>> points {{3,12},{-2,5},{-4,1}};
+    vector<vector<int>> points{{3, 12}, {-2, 5}, {-4, 1}};
     int ans = 18;
 
     Solution sol;

@@ -26,8 +26,7 @@ public:
             totalCost += cost[i];
         }
 
-        if (totalGas < totalCost) 
-            return -1;
+        if (totalGas < totalCost) return -1;
 
         int result = 0;
         int total = 0;
@@ -45,8 +44,8 @@ public:
 };
 
 TEST(GasStation, Example1) {
-    vector<int> gas = {1,2,3,4,5};
-    vector<int> cost = {3,4,5,1,2};
+    vector<int> gas = {1, 2, 3, 4, 5};
+    vector<int> cost = {3, 4, 5, 1, 2};
     int ans = 3;
 
     Solution sol;
@@ -54,8 +53,8 @@ TEST(GasStation, Example1) {
 }
 
 TEST(GasStation, Example2) {
-    vector<int> gas = {2,3,4};
-    vector<int> cost = {3,4,3};
+    vector<int> gas = {2, 3, 4};
+    vector<int> cost = {3, 4, 3};
     int ans = -1;
 
     Solution sol;

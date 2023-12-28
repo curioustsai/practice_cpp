@@ -15,14 +15,12 @@ public:
         int res = 0;
         while (x) {
             int temp = x % 10;
-            x =  x / 10;
+            x = x / 10;
 
             // prevent overflow
-            if (res > INT32_MAX / 10 || (res == INT32_MAX / 10 && temp > 7))
-                return 0;
+            if (res > INT32_MAX / 10 || (res == INT32_MAX / 10 && temp > 7)) return 0;
             // prevent overflow
-            if (res < INT32_MIN / 10 || (res == INT32_MIN / 10 && temp < -8))
-                return 0;
+            if (res < INT32_MIN / 10 || (res == INT32_MIN / 10 && temp < -8)) return 0;
             res = res * 10 + temp;
         }
 

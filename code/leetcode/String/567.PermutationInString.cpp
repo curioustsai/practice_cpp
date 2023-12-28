@@ -22,19 +22,17 @@ public:
             count[s2[i] - 'a']--;
         }
 
-        if (isPermutation(count)) {
-            return true;
-        }
+        if (isPermutation(count)) { return true; }
 
         for (int i = m; i < n; i++) {
             count[s2[i] - 'a']--;
-            count[s2[i-m] - 'a']++;
+            count[s2[i - m] - 'a']++;
 
-            if (isPermutation(count))
-                return true;
+            if (isPermutation(count)) return true;
         }
         return false;
     }
+
 private:
     bool isPermutation(vector<int>& count) {
         for (int i = 0; i < 26; i++) {

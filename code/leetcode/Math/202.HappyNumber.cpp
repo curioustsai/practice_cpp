@@ -28,6 +28,7 @@ public:
         if (fast == 1) return true;
         return false;
     }
+
 private:
     int getNext(int n) {
         int res = 0;

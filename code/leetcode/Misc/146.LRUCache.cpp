@@ -69,9 +69,9 @@ public:
     Node* prev;
     Node* next;
 
-    Node(int k, int v) : key(k), value(v) { 
-        prev=nullptr; 
-        next=nullptr;
+    Node(int k, int v) : key(k), value(v) {
+        prev = nullptr;
+        next = nullptr;
     };
 };
 
@@ -105,7 +105,7 @@ public:
     void put(int key, int value) {
         if (cache.find(key) != cache.end()) {
             remove(cache[key]);
-            delete(cache[key]);
+            delete (cache[key]);
         }
         cache[key] = new Node(key, value);
         insert(cache[key]);
@@ -114,7 +114,7 @@ public:
             Node* lru = left->next;
             remove(lru);
             cache.erase(lru->key);
-            delete(lru);
+            delete (lru);
         }
     }
 
@@ -152,7 +152,7 @@ private:
  */
 
 TEST(LRUCache, Example1) {
-    LRUCache *lRUCache = new LRUCache(2);
+    LRUCache* lRUCache = new LRUCache(2);
     lRUCache->put(1, 1);             // cache is {1=1}
     lRUCache->put(2, 2);             // cache is {1=1, 2=2}
     ASSERT_EQ(lRUCache->get(1), 1);  // return 1

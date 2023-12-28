@@ -11,7 +11,6 @@ Both the left and right subtrees must also be binary search trees.
 #include <gtest/gtest.h>
 
 #include <iostream>
-#include <queue>
 using namespace std;
 
 struct TreeNode {

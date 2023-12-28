@@ -16,7 +16,7 @@ using namespace std;
 class Solution {
 public:
     int networkDelayTime(vector<vector<int>>& times, int n, int k) {
-        vector<vector<pair<int, int>>> adj(n+1);
+        vector<vector<pair<int, int>>> adj(n + 1);
 
         for (int i = 0; i < times.size(); i++) {
             int source = times[i][0];
@@ -56,7 +56,7 @@ public:
         int result = INT32_MIN;
         for (int i = 1; i <= n; i++) { result = max(result, signalReceiveTime[i]); }
 
-        return (result == INT32_MAX) ? -1:result;
+        return (result == INT32_MAX) ? -1 : result;
     }
 };
 

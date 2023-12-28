@@ -31,8 +31,7 @@ public:
 
                     if (rows[r][number]++) return 0;
                     if (cols[c][number]++) return 0;
-                    if (blocks[r/3][c/3][number]++) return 0;
-
+                    if (blocks[r / 3][c / 3][number]++) return 0;
                 }
             }
         }

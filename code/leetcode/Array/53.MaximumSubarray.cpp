@@ -38,7 +38,7 @@ public:
 
         return max_sum;
     }
-    
+
     // Follow up question, show the subarray, index
     int maxSubArrayIndex(vector<int>& nums) {
         int curr_sum = nums[0];
@@ -51,7 +51,7 @@ public:
                 s = i;
                 curr_sum = nums[i];
             }
-            
+
             if (curr_sum > max_sum) {
                 max_sum = curr_sum;
                 start = s;

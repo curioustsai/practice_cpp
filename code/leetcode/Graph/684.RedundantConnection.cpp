@@ -29,13 +29,11 @@ class Solution {
 public:
     vector<int> findRedundantConnection(vector<vector<int>>& edges) {
         int n = edges.size();
-        vector<int> parent(n+1, 0);
-        vector<int> rank(n+1, 1);
+        vector<int> parent(n + 1, 0);
+        vector<int> rank(n + 1, 1);
         vector<int> result;
 
-        for (int i = 1; i <= n; i++) {
-            parent[i] = i;
-        }
+        for (int i = 1; i <= n; i++) { parent[i] = i; }
 
         for (int i = 0; i < edges.size(); i++) {
             int m = edges[i][0];
@@ -63,9 +61,8 @@ private:
         int p1 = findParent(parent, m);
         int p2 = findParent(parent, n);
 
-        if (p1 == p2)
-            return false;
-        
+        if (p1 == p2) return false;
+
         if (rank[p1] >= rank[p2]) {
             parent[p2] = p1;
             rank[p1] += p2;

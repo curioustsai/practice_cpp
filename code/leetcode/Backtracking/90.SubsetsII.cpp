@@ -6,8 +6,8 @@ https://leetcode.com/problems/subsets-ii/
 */
 #include <gtest/gtest.h>
 
-#include <vector>
 #include <algorithm>
+#include <vector>
 using namespace std;
 
 class Solution {
@@ -26,10 +26,9 @@ public:
 
         for (int i = start; i < nums.size(); i++) {
             //prune
-            if (i > start && nums[i] == nums[i-1])
-                continue;
+            if (i > start && nums[i] == nums[i - 1]) continue;
             sub.push_back(nums[i]);
-            subsets(nums, i+1, sub, subs);
+            subsets(nums, i + 1, sub, subs);
             sub.pop_back();
         }
     }

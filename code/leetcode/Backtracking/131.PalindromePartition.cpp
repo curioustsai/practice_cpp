@@ -19,13 +19,13 @@ public:
         return results;
     }
 
-    void dfs(string s, int start, vector<string>& curr, vector<vector<string>>& results){
+    void dfs(string s, int start, vector<string>& curr, vector<vector<string>>& results) {
         if (start == s.size()) {
             results.push_back(curr);
             return;
         }
 
-        for (int i=start; i < s.size(); i++) {
+        for (int i = start; i < s.size(); i++) {
             if (isPalindrome(s, start, i)) {
                 string ss = s.substr(start, i - start + 1);
                 curr.push_back(ss);

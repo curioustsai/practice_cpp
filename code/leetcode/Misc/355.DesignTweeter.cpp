@@ -3,22 +3,18 @@
 * https://leetcode.com/problems/design-twitter/
 */
 
-#include <vector>
 #include <unordered_map>
 #include <unordered_set>
+#include <vector>
 
 using namespace std;
 
 class Twitter {
 public:
-    Twitter() {
-        
-    }
-    
-    void postTweet(int userId, int tweetId) {
-        posts.push_back({userId, tweetId});
-    }
-    
+    Twitter() {}
+
+    void postTweet(int userId, int tweetId) { posts.push_back({userId, tweetId}); }
+
     vector<int> getNewsFeed(int userId) {
         int count = 0;
         vector<int> res;
@@ -31,20 +27,16 @@ public:
         }
         return res;
     }
-    
-    void follow(int followerId, int followeeId) {
-        map[followerId].insert(followeeId);
-    }
-    
-    void unfollow(int followerId, int followeeId) {
-        map[followerId].erase(followeeId);
-    }
+
+    void follow(int followerId, int followeeId) { map[followerId].insert(followeeId); }
+
+    void unfollow(int followerId, int followeeId) { map[followerId].erase(followeeId); }
+
 private:
     // followerID, a bunch of followeeID
     unordered_map<int, unordered_set<int>> map;
     // {userID, postID}
     vector<pair<int, int>> posts;
-
 };
 
 /**

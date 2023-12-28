@@ -26,7 +26,7 @@ public:
         return result;
     }
 
-    void helper(TreeNode* root, int& k, int& result) {
+    void helper(TreeNode *root, int &k, int &result) {
         if (!root) return;
 
         helper(root->left, k, result);

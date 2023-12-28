@@ -21,7 +21,7 @@ public:
         if (totalSum & 1) return false;
 
         int n = nums.size();
-        vector<vector<int>> dp(n+1, vector<int>(totalSum/2+1, -1));
+        vector<vector<int>> dp(n + 1, vector<int>(totalSum / 2 + 1, -1));
         return subsetSum(nums, totalSum / 2, 0, dp);
     }
 
@@ -43,28 +43,21 @@ public:
         int n = nums.size();
         int sum = totalSum / 2;
         // the state that dp[i][j] means at index i of nums can meet sum j.
-        vector<vector<int>> dp(n+1, vector<int>(sum+1, -1));
+        vector<vector<int>> dp(n + 1, vector<int>(sum + 1, -1));
 
         dp[0][0] = true;
 
+        for (int i = 1; i <= n; i++) { dp[i][0] = true; }
+
+        for (int j = 1; j <= sum; j++) { dp[0][j] = false; }
+
         for (int i = 1; i <= n; i++) {
-            dp[i][0] = true;
-        }
-
-        for (int j = 1; j <= sum; j++) {
-            dp[0][j] = false;
-        }
-
-        for (int i = 1; i <=n; i++) {
             for (int j = 1; j <= sum; j++) {
-                dp[i][j] = dp[i-1][j];
+                dp[i][j] = dp[i - 1][j];
 
-                if (j >= nums[i-1]) {
-                    dp[i][j] = dp[i-1][j] || dp[i-1][j-nums[i-1]];
-                }
+                if (j >= nums[i - 1]) { dp[i][j] = dp[i - 1][j] || dp[i - 1][j - nums[i - 1]]; }
             }
         }
-
 
         return dp[n][sum];
     }

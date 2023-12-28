@@ -24,21 +24,18 @@ public:
             else
                 balance--;
 
-            if (balance < 0)
-                return false;
+            if (balance < 0) return false;
         }
 
-        if (balance == 0)
-            return true;
+        if (balance == 0) return true;
 
         balance = 0;
-        for (int i = s.size()-1; i >= 0; i--) {
+        for (int i = s.size() - 1; i >= 0; i--) {
             if (s[i] == ')' || s[i] == '*')
                 balance++;
             else
                 balance--;
-            if (balance < 0)
-                return false;
+            if (balance < 0) return false;
         }
 
         return true;

@@ -8,11 +8,10 @@
  * https://leetcode.com/problems/course-schedule-ii/description/
 */
 
-
 #include <gtest/gtest.h>
 
-#include <vector>
 #include <queue>
+#include <vector>
 
 using namespace std;
 
@@ -28,9 +27,7 @@ public:
         }
         //calculateIndegree
         for (int i = 0; i < numCourses; i++) {
-            for (int v: graph[i]) {
-                indegree[v]++;
-            }
+            for (int v : graph[i]) { indegree[v]++; }
         }
 
         // bfs, remove from the leaf
@@ -47,7 +44,7 @@ public:
             int v = q.front();
             q.pop();
 
-            for (int ngh: graph[v]) {
+            for (int ngh : graph[v]) {
                 indegree[ngh]--;
                 if (!indegree[ngh]) {
                     q.push(ngh);

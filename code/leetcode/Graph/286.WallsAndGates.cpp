@@ -20,9 +20,7 @@ public:
         queue<pair<int, int>> q;
         for (int i = 0; i < rooms.size(); i++) {
             for (int j = 0; j < rooms[0].size(); j++) {
-                if (rooms[i][j] == 0) {
-                    q.push({i, j});
-                }
+                if (rooms[i][j] == 0) { q.push({i, j}); }
             }
         }
 
@@ -35,7 +33,8 @@ public:
                 int xx = x + dirs[i][0];
                 int yy = y + dirs[i][1];
 
-                if (xx < 0 || xx >= rooms.size() || yy < 0 || yy >= rooms[0].size() || rooms[xx][yy] != INT32_MAX)
+                if (xx < 0 || xx >= rooms.size() || yy < 0 || yy >= rooms[0].size() ||
+                    rooms[xx][yy] != INT32_MAX)
                     continue;
 
                 rooms[xx][yy] = rooms[x][y] + 1;
@@ -43,6 +42,7 @@ public:
             }
         }
     }
+
 private:
-    vector<vector<int>> dirs = {{1,0}, {0, 1}, {-1, 0}, {0, -1}};
+    vector<vector<int>> dirs = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
 };

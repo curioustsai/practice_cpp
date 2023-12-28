@@ -33,9 +33,8 @@ private:
         }
 
         for (int col = 0; col < n; col++) {
-            if (cols.find(col) != cols.end() ||
-                negDiag.find(row-col) != negDiag.end() ||
-                posDiag.find(row+col) != posDiag.end())
+            if (cols.find(col) != cols.end() || negDiag.find(row - col) != negDiag.end() ||
+                posDiag.find(row + col) != posDiag.end())
                 continue;
 
             cols.insert(col);
@@ -56,7 +55,8 @@ private:
 TEST(NQueens, Example1) {
     Solution sol;
     int n = 4;
-    vector<vector<string>> ans = {{".Q..","...Q","Q...","..Q."},{"..Q.","Q...","...Q",".Q.."}};
+    vector<vector<string>> ans = {{".Q..", "...Q", "Q...", "..Q."},
+                                  {"..Q.", "Q...", "...Q", ".Q.."}};
 
     ASSERT_EQ(sol.solveNQueens(n), ans);
 }

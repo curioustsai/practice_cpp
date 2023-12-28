@@ -13,22 +13,17 @@ class Solution {
 public:
     bool isNStraightHand(vector<int>& hand, int groupSize) {
         int n = hand.size();
-        if (n % groupSize != 0)
-            return false;
-        
-        map<int, int> map;
-        for (int h: hand) {
-            map[h]++;
-        }
+        if (n % groupSize != 0) return false;
 
-        while(!map.empty()){
+        map<int, int> map;
+        for (int h : hand) { map[h]++; }
+
+        while (!map.empty()) {
             int curr = map.begin()->first;
             for (int i = 0; i < groupSize; i++) {
-                if (map[curr+i] == 0)
-                    return false;
-                map[curr+i]--;
-                if (map[curr+i] == 0)
-                    map.erase(curr+i);
+                if (map[curr + i] == 0) return false;
+                map[curr + i]--;
+                if (map[curr + i] == 0) map.erase(curr + i);
             }
         }
         return true;

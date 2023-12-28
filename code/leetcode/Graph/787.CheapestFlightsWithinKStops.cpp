@@ -8,8 +8,8 @@
 #include <gtest/gtest.h>
 
 #include <queue>
-#include <vector>
 #include <unordered_map>
+#include <vector>
 
 using namespace std;
 
@@ -18,7 +18,7 @@ public:
     // BFS
     int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) {
         vector<vector<pair<int, int>>> adj(n);
-        for(auto flight : flights){
+        for (auto flight : flights) {
             // flight[0] represent node i, flight[1] represent neighbor node of node i, flight[2] represent cost between node i to neighbor node
             adj[flight[0]].push_back({flight[1], flight[2]});
         }
@@ -28,17 +28,17 @@ public:
         //it will store minimum cost to reach each node
         vector<int> minCost(n, INT32_MAX);
         int stops = 0;
-        while(!q.empty() && stops <= k){
+        while (!q.empty() && stops <= k) {
             int size = q.size();
             while (size--) {
                 int currNode = q.front().first;
                 int cost = q.front().second;
                 q.pop();
-                for (auto aj: adj[currNode]) {
+                for (auto aj : adj[currNode]) {
                     int neighbour = aj.first;
                     int price = aj.second;
 
-                    if (price + cost < minCost[neighbour]){
+                    if (price + cost < minCost[neighbour]) {
                         minCost[neighbour] = price + cost;
                         q.push({neighbour, minCost[neighbour]});
                     }
@@ -46,7 +46,7 @@ public:
             }
             stops++;
         }
-        return (minCost[dst] == INT32_MAX) ? -1:minCost[dst];
+        return (minCost[dst] == INT32_MAX) ? -1 : minCost[dst];
     }
 
     /*
@@ -60,14 +60,14 @@ public:
 
         for (int stop = 0; stop <= k; stop++) {
             vector<int> temp(minDist);
-            for (auto flight: flights) {
+            for (auto flight : flights) {
                 if (minDist[flight[0]] != INT32_MAX) {
                     temp[flight[1]] = min(temp[flight[1]], minDist[flight[0]] + flight[2]);
                 }
             }
             minDist = temp;
         }
-        return (minDist[dst] == INT32_MAX) ? -1: minDist[dst];
+        return (minDist[dst] == INT32_MAX) ? -1 : minDist[dst];
     }
 
     /* Dijkstra’s Algorithm allows you to calculate the shortest path between 
@@ -86,28 +86,27 @@ public:
     in inner loop are executed O(V+E) times (similar to BFS).
     So overall time complexity is O(E+V)*O(LogV) which is O((E+V)*LogV) = O(ELogV)
     */
-    
+
     int findCheapestPrice3(int n, vector<vector<int>>& flights, int src, int dst, int K) {
         // create adjacency list
-        unordered_map<int,vector<pair<int, int>>> adjList;
-        for( auto f : flights )
-            adjList[f[0]].push_back( { f[1], f[2] } );
-        
+        unordered_map<int, vector<pair<int, int>>> adjList;
+        for (auto f : flights) adjList[f[0]].push_back({f[1], f[2]});
+
         // minHeap based on cost of distance from source
-        priority_queue< vector<int>, vector<vector<int>>, greater<vector<int>> > minHeap;
-        minHeap.push( { 0, src, K+1 } ); // cost, vertex, hops
-        
-        while( !minHeap.empty() ) {
-            auto t = minHeap.top(); minHeap.pop();
+        priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>> minHeap;
+        minHeap.push({0, src, K + 1}); // cost, vertex, hops
+
+        while (!minHeap.empty()) {
+            auto t = minHeap.top();
+            minHeap.pop();
             int cost = t[0];
             int curr = t[1];
             int stop = t[2];
-            if( curr == dst )
-                return cost;
+            if (curr == dst) return cost;
 
-            if( stop > 0 )
-                for( auto next : adjList[curr] )
-                    minHeap.push( { cost+next.second, next.first, stop-1 } );
+            if (stop > 0)
+                for (auto next : adjList[curr])
+                    minHeap.push({cost + next.second, next.first, stop - 1});
         }
         return -1;
     }
@@ -115,8 +114,8 @@ public:
 
 TEST(FindCheapestPrice, Example1) {
     int n = 4;
-    vector<vector<int>> flights = {{0,1,100},{1,2,100},{2,0,100},{1,3,600},{2,3,200}};
-    int src = 0; 
+    vector<vector<int>> flights = {{0, 1, 100}, {1, 2, 100}, {2, 0, 100}, {1, 3, 600}, {2, 3, 200}};
+    int src = 0;
     int dst = 3;
     int k = 1;
     int ans = 700;
@@ -127,8 +126,8 @@ TEST(FindCheapestPrice, Example1) {
 
 TEST(FindCheapestPrice, Example2) {
     int n = 3;
-    vector<vector<int>> flights = {{0,1,100},{1,2,100},{0,2,500}};
-    int src = 0; 
+    vector<vector<int>> flights = {{0, 1, 100}, {1, 2, 100}, {0, 2, 500}};
+    int src = 0;
     int dst = 2;
     int k = 1;
     int ans = 200;
@@ -139,8 +138,8 @@ TEST(FindCheapestPrice, Example2) {
 
 TEST(FindCheapestPrice, Example3) {
     int n = 3;
-    vector<vector<int>> flights = {{0,1,100},{1,2,100},{0,2,500}};
-    int src = 0; 
+    vector<vector<int>> flights = {{0, 1, 100}, {1, 2, 100}, {0, 2, 500}};
+    int src = 0;
     int dst = 2;
     int k = 0;
     int ans = 500;

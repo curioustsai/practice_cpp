@@ -9,9 +9,9 @@ https://leetcode.com/problems/k-closest-points-to-origin/
 #include <gtest/gtest.h>
 
 #include <algorithm>
-#include <vector>
-#include <queue>
 #include <cmath>
+#include <queue>
+#include <vector>
 
 using namespace std;
 
@@ -31,13 +31,11 @@ public:
         for (int i = 0; i < points.size(); i++) {
             double distance = sqrt(pow(points[i][0], 2) + pow(points[i][1], 2));
             pq.push({distance, points[i]});
-            if (pq.size() > k) {
-                pq.pop();
-            }
+            if (pq.size() > k) { pq.pop(); }
         }
 
         vector<vector<int>> result;
-        while(!pq.empty()) {
+        while (!pq.empty()) {
             result.push_back(pq.top().second);
             pq.pop();
         }
@@ -48,12 +46,12 @@ public:
     // min, heapd, O(k logn) solution
     vector<vector<int>> kClosest_MinHeap(vector<vector<int>>& points, int k) {
         vector<vector<int>> triples;
-        for (auto& p : points)
-            triples.push_back({p[0] * p[0] + p[1] * p[1], p[0], p[1]});
+        for (auto& p : points) triples.push_back({p[0] * p[0] + p[1] * p[1], p[0], p[1]});
         // Min heap of vectors (triples). This constructor takes O(n) time (n = len(v))
-        priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>> pq(triples.begin(), triples.end());
+        priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>> pq(triples.begin(),
+                                                                                  triples.end());
         vector<vector<int>> res;
-        while (k--){
+        while (k--) {
             vector<int> el = pq.top();
             pq.pop();
             res.push_back({el[1], el[2]});
@@ -64,9 +62,9 @@ public:
     // O(n logn) solution using sorting
     vector<vector<int>> kClosest_sorting(vector<vector<int>>& points, int k) {
         vector<vector<int>> res(k);
-        sort(points.begin(), points.end(), [](vector<int>& p1, vector<int>& p2){
-            int dist_p1 = pow(p1[0],2) + pow(p1[1],2);
-            int dist_p2 = pow(p2[0],2) + pow(p2[1],2);
+        sort(points.begin(), points.end(), [](vector<int>& p1, vector<int>& p2) {
+            int dist_p1 = pow(p1[0], 2) + pow(p1[1], 2);
+            int dist_p2 = pow(p2[0], 2) + pow(p2[1], 2);
             return dist_p1 < dist_p2;
         });
         copy(points.begin(), points.begin() + k, res.begin());
@@ -77,7 +75,7 @@ public:
         int low = 0;
         int high = points.size() - 1;
         int pivotIndex = points.size();
-        
+
         while (pivotIndex != k) {
             pivotIndex = partition(points, low, high);
             if (pivotIndex < k) {
@@ -86,7 +84,7 @@ public:
                 high = pivotIndex - 1;
             }
         }
-        
+
         return vector<vector<int>>(points.begin(), points.begin() + k);
     };
 
@@ -94,7 +92,7 @@ private:
     int partition(vector<vector<int>>& points, int low, int high) {
         vector<int> pivot = points[low + (high - low) / 2];
         int pivotDistance = getDistance(pivot);
-        
+
         while (low < high) {
             if (getDistance(points[low]) >= pivotDistance) {
                 swap(points[low], points[high]);
@@ -103,16 +101,12 @@ private:
                 low++;
             }
         }
-        
-        if (getDistance(points[low]) < pivotDistance) {
-            low++;
-        }
+
+        if (getDistance(points[low]) < pivotDistance) { low++; }
         return low;
     }
-    
-    int getDistance(vector<int>& point) {
-        return pow(point[0], 2) + pow(point[1], 2);
-    }
+
+    int getDistance(vector<int>& point) { return pow(point[0], 2) + pow(point[1], 2); }
 };
 
 TEST(kCloset, Example1) {
