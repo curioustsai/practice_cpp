@@ -9,6 +9,7 @@ Open brackets must be closed in the correct order.
 
 #include <gtest/gtest.h>
 #include <stack>
+#include <unordered_map>
 
 using namespace std;
 
@@ -48,6 +49,34 @@ public:
             }
         }
         return st.empty();
+    }
+
+    bool isValid3(string s) {
+        stack<char> open;
+        unordered_map<char, char> parens = {
+            {')', '('},
+            {']', '['},
+            {'}', '{'},
+        };
+        
+        for (const auto& c : s) {
+            if (parens.find(c) != parens.end()) {
+                // if input starts with a closing bracket.
+                if (open.empty()) {
+                    return false;
+                }
+
+                if (open.top() != parens[c]) {
+                    return false;
+                }
+
+                open.pop();
+            } else {
+                open.push(c);
+            }
+        }
+        
+        return open.empty();
     }
 };
 

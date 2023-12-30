@@ -6,7 +6,6 @@ https://leetcode.com/problems/permutations/
 
 #include <gtest/gtest.h>
 
-#include <unordered_set>
 #include <vector>
 
 using namespace std;

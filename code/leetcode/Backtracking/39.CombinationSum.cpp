@@ -11,7 +11,6 @@ https://leetcode.com/problems/combination-sum/description/
 
 #include <gtest/gtest.h>
 
-#include <unordered_set>
 #include <vector>
 
 using namespace std;

@@ -6,7 +6,6 @@
 
 #include <gtest/gtest.h>
 
-#include <stack>
 #include <vector>
 
 using namespace std;
@@ -29,3 +28,17 @@ public:
         if (open > close) helper(n, open, close + 1, curr + ')', result);
     }
 };
+
+TEST(generateParenthesis, Example1) {
+    int n = 3;
+    Solution sol;
+    vector<string> ans = {"((()))","(()())","(())()","()(())","()()()"};
+    ASSERT_EQ(sol.generateParenthesis(n), ans);
+}
+
+TEST(generateParenthesis, Example2) {
+    int n = 1;
+    Solution sol;
+    vector<string> ans = {"()"};
+    ASSERT_EQ(sol.generateParenthesis(n), ans);
+}

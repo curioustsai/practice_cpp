@@ -7,7 +7,6 @@ A subarray is a contiguous subsequence of the array.
 #include <gtest/gtest.h>
 
 #include <algorithm>
-#include <iostream>
 #include <vector>
 
 using namespace std;

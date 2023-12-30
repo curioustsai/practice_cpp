@@ -15,6 +15,7 @@ using namespace std;
 
 class Solution {
 public:
+    // time complexity: O(n^2)
     int largestRectangleArea_BruteForce(vector<int> heights) {
         int n = heights.size();
         int maxArea = 0;
@@ -30,6 +31,7 @@ public:
         return maxArea;
     }
 
+    // time complexity: O(n)
     int largestRectangleArea(vector<int> height) {
         int n = height.size();
         if (n == 0) return 0;

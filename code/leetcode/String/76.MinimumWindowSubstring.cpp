@@ -12,7 +12,6 @@ https://leetcode.com/problems/minimum-window-substring/discuss/26808/Here-is-a-1
 
 #include <string>
 #include <unordered_map>
-#include <vector>
 
 using namespace std;
 

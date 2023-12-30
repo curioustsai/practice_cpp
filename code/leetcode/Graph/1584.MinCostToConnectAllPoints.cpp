@@ -34,8 +34,9 @@ public:
         minCost[0] = 0;
         int edgeUsed = 0;
         int result = 0;
-        // pick up the closet point to MST
+
         while (edgeUsed < n) {
+            // pick up the closet point to MST
             int currNode = -1;
             int currCost = INT32_MAX;
 

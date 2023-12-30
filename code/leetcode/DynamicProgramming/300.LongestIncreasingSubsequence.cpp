@@ -17,7 +17,7 @@ public:
     //Space O(n)
     int lengthOfLIS(vector<int>& nums) {
         int res = 1;
-        vector<int> dp(nums.size(), 1); // reocrd the LIS at each index
+        vector<int> dp(nums.size(), 1); // record the LIS at each index
 
         for (int i = 0; i < nums.size(); i++) {
             for (int j = 0; j < i; j++) {
