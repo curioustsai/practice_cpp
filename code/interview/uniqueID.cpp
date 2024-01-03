@@ -10,7 +10,7 @@ public:
         string result;
         while (true) {
             result = generateString();
-            if (log.find(result) != log.end()) {
+            if (log.find(result) == log.end()) {
                 log.insert(result);
                 return result;
             }
