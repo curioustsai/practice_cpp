@@ -6,8 +6,7 @@ https://leetcode.com/problems/trapping-rain-water/
 
 #include <gtest/gtest.h>
 
-#include <algorithm>
-#include <iostream>
+#include <stack>
 #include <vector>
 
 using namespace std;
@@ -37,6 +36,28 @@ public:
             }
         }
         return ans;
+    }
+
+    int trap2(vector<int>& height) {
+        int n = height.size();
+        if (n <= 2) return 0;
+        stack<int> st; // monotonic decrease
+
+        int result = 0;
+        int index = 0;
+        while (index < n) {
+            if (st.empty() || height[index] <= height[st.top()]) {
+                st.push(index++);
+            } else {
+                int pre = st.top();
+                st.pop();
+                if (!st.empty()) {
+                    int minHeight = min(height[st.top()], height[index]);
+                    result += (minHeight - height[pre]) * (index - st.top() - 1);
+                }
+            }
+        }
+        return result;
     }
 };
 
