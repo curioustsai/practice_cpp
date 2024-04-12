@@ -36,6 +36,18 @@ public:
 
         return false;
     }
+
+    bool containsDuplicateSet(vector<int>& nums) {
+        set<int> set;
+
+        for (int n : nums) {
+            if (set.count(n))
+                return true;
+            else
+                set.insert(n);
+        }
+        return false;
+    }
 };
 
 TEST(ContainsDuplicate, Test1) {

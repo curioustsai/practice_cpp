@@ -26,6 +26,24 @@ public:
         }
         return counter;
     }
+
+    int countSubstrings2(string s) {
+        int counter = 0;
+        for (int i = 0; i < s.size(); i++) {
+            middleOut(s, i, i, counter);
+            middleOut(s, i, i + 1, counter);
+        }
+        return counter;
+    }
+
+private:
+    void middleOut(string s, int left, int right, int &counter) {
+        while (left > 0 && right < s.size() && s[left] == s[right]) {
+            left--;
+            right++;
+            counter++;
+        }
+    }
 };
 
 TEST(PalindromicSubstrings, Example1) {
